@@ -1,4 +1,6 @@
+import type { Metadata } from "next"
 import { company } from "@/content/site"
+import { baseOpenGraph, siteUrl } from "@/lib/metadata"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { MobileActionBar } from "@/components/mobile-action-bar"
@@ -13,15 +15,20 @@ import { Projects } from "@/components/sections/projects"
 import { Reviews } from "@/components/sections/reviews"
 import { CtaBand } from "@/components/sections/cta-band"
 
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { ...baseOpenGraph, url: "/" },
+}
+
 const localBusiness = {
   "@context": "https://schema.org",
   "@type": "RoofingContractor",
   name: company.name,
   legalName: company.legalName,
-  url: "https://strehapremium.si",
+  url: siteUrl,
   telephone: "+38641815559",
   email: company.email,
-  image: "https://strehapremium.si/hero/koncana-streha.webp",
+  image: `${siteUrl}/hero/koncana-streha.webp`,
   address: {
     "@type": "PostalAddress",
     streetAddress: company.street,

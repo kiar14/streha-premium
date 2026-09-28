@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { Archivo } from "next/font/google"
 import { SmoothScroll } from "@/components/providers/smooth-scroll"
+import { baseOpenGraph, siteUrl } from "@/lib/metadata"
 import "./globals.css"
 
 const archivo = Archivo({
@@ -11,18 +12,20 @@ const archivo = Archivo({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://strehapremium.si"),
+  metadataBase: new URL(siteUrl),
+  applicationName: "Streha Premium",
   title: {
     default: "Streha Premium, krovstvo z 10-letno garancijo na vodotesnost",
     template: "%s, Streha Premium",
   },
   description:
     "Krovska, kleparska in hidroizolacijska dela po vsej Sloveniji in v Avstriji. Brezplačen ogled in ponudba, pisna 10-letna garancija na vodotesnost. Pošljite povpraševanje.",
-  openGraph: {
-    type: "website",
-    locale: "sl_SI",
-    siteName: "Streha Premium d.o.o.",
-  },
+  authors: [{ name: "Streha Premium d.o.o.", url: siteUrl }],
+  publisher: "Streha Premium d.o.o.",
+  category: "Krovstvo",
+  // Stops iOS from turning tax and registration numbers into phone links.
+  formatDetection: { telephone: false, email: false, address: false },
+  openGraph: baseOpenGraph,
   // Demo build: keep it out of search results until launch.
   robots: { index: false, follow: false },
 }

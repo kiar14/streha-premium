@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next"
-
-const base = "https://strehapremium.si"
+import { siteUrl as base } from "@/lib/metadata"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

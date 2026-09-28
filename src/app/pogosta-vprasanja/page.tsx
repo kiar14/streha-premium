@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { faqGroups } from "@/content/site"
+import { baseOpenGraph } from "@/lib/metadata"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { MobileActionBar } from "@/components/mobile-action-bar"
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   description:
     "Odgovori na vprašanja pred menjavo ali obnovo strehe: brezplačen ogled in ponudba, 10-letna garancija na vodotesnost, roki izvedbe, kritine in območje dela.",
   alternates: { canonical: "/pogosta-vprasanja" },
+  openGraph: { ...baseOpenGraph, url: "/pogosta-vprasanja" },
 }
 
 const faqJsonLd = {
