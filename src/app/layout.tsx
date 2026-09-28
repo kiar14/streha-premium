@@ -13,8 +13,8 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   metadataBase: new URL("https://strehapremium.si"),
   title: {
-    default: "Streha Premium – krovstvo z 10-letno garancijo na vodotesnost",
-    template: "%s – Streha Premium",
+    default: "Streha Premium, krovstvo z 10-letno garancijo na vodotesnost",
+    template: "%s, Streha Premium",
   },
   description:
     "Krovska, kleparska in hidroizolacijska dela po vsej Sloveniji in v Avstriji. Brezplačen ogled in ponudba, pisna 10-letna garancija na vodotesnost. Pošljite povpraševanje.",

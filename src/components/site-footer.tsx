@@ -9,7 +9,7 @@ export function SiteFooter() {
         <div className="lg:col-span-4">
           <Image src="/brand/logo-light.png" alt="Streha Premium" width={640} height={411} className="h-16 w-auto" />
           <p className="mt-5 max-w-[20rem] leading-relaxed">
-            Krovstvo – vse za streho. Pisna 10-letna garancija na vodotesnost za vsa naša dela.
+            Krovstvo, vse za streho. Pisna 10-letna garancija na vodotesnost za vsa naša dela.
           </p>
           <a
             href={company.facebook}

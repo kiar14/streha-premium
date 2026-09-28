@@ -124,7 +124,7 @@ export function Enquiry() {
                 >
                   Pošlji novo povpraševanje
                 </button>
-                <p className="mt-10 text-xs text-graphite/65">Demo obrazec – podatki se ne pošiljajo ali shranjujejo.</p>
+                <p className="mt-10 text-xs text-graphite/65">Demo obrazec, podatki se ne pošiljajo ali shranjujejo.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-x-6 gap-y-6 sm:grid-cols-2">

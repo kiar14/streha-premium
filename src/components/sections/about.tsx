@@ -12,7 +12,7 @@ const facts = [
 
 export function About() {
   return (
-    <section id="o-nas" aria-labelledby="o-nas-title" className="bg-zinc py-24 text-graphite md:py-32">
+    <section id="o-nas" aria-labelledby="o-nas-title" className="bg-white py-24 text-graphite md:py-32">
       <div className="mx-auto grid max-w-[88rem] gap-14 px-5 md:px-8 lg:grid-cols-12 lg:gap-8">
         <div className="relative lg:col-span-5">
           <Image
@@ -23,7 +23,7 @@ export function About() {
             sizes="(min-width: 1024px) 38vw, 100vw"
             className="h-auto w-full"
           />
-          <div className="absolute -bottom-6 right-4 w-28 border-4 border-zinc bg-slate-2 sm:right-[-1.5rem] sm:w-44">
+          <div className="absolute -bottom-6 right-4 w-28 border-4 border-white bg-slate-2 sm:right-[-1.5rem] sm:w-44">
             <div className="grid aspect-[4/5] place-items-center [background-image:repeating-linear-gradient(135deg,rgb(242_243_241/0.07)_0_1px,transparent_1px_12px)]">
               <span className="annotation px-2 text-center text-[0.625rem] leading-relaxed text-zinc/65">
                 Portret

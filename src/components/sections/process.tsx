@@ -5,6 +5,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
 import { process } from "@/content/site"
+import { SectionEyebrow } from "@/components/section-eyebrow"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -15,46 +16,43 @@ export function Process() {
     () => {
       const mm = gsap.matchMedia()
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const tl = gsap.timeline({
-          scrollTrigger: { trigger: "[data-steps]", start: "top 78%", once: true },
-        })
-        tl.fromTo(
-          "[data-line]",
-          { scaleX: 0, scaleY: 0 },
-          { scaleX: 1, scaleY: 1, ease: "power2.inOut", duration: 1.6 },
-          0,
-        ).from("[data-step]", { opacity: 0, y: 16, stagger: 0.3, duration: 0.8, ease: "expo.out" }, 0.15)
+        const tl = gsap.timeline({ scrollTrigger: { trigger: "[data-steps]", start: "top 80%", once: true } })
+        tl.fromTo("[data-line]", { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: "power2.inOut" }, 0)
+          .from("[data-tile]", { scale: 0.6, opacity: 0, duration: 0.7, stagger: 0.18, ease: "expo.out" }, 0.1)
+          .from("[data-step-copy]", { opacity: 0, y: 14, duration: 0.8, stagger: 0.18, ease: "expo.out" }, 0.3)
       })
     },
     { scope },
   )
 
   return (
-    <section ref={scope} id="kako-delamo" aria-labelledby="kako-delamo-title" className="bg-slate py-24 md:py-32">
-      <div className="mx-auto max-w-[88rem] px-5 md:px-8">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h2 id="kako-delamo-title" className="font-display text-[clamp(2.5rem,5.6vw,4.75rem)] text-zinc lg:col-span-7">
-            Brez presenečenj. V štirih korakih.
-          </h2>
-          <p className="max-w-[30rem] text-lg leading-relaxed text-zinc/75 lg:col-span-5 lg:justify-self-end">
-            Ogled in ponudba sta brezplačna. Ko ponudbo potrdite, lahko začnemo takoj.
-          </p>
-        </div>
+    <section ref={scope} id="kako-delamo" aria-labelledby="kako-delamo-title" className="bg-zinc py-24 text-graphite md:py-32">
+      <div className="mx-auto max-w-[80rem] px-5 md:px-8">
+        <SectionEyebrow>Kako delamo</SectionEyebrow>
+        <h2
+          id="kako-delamo-title"
+          className="mx-auto mt-5 max-w-[46rem] text-center text-[clamp(2.25rem,4.6vw,3.6rem)] leading-[1.05] font-semibold tracking-[-0.035em]"
+        >
+          Brez presenečenj. V štirih korakih.
+        </h2>
 
-        <ol data-steps className="relative mt-16 grid gap-10 pl-8 lg:mt-24 lg:grid-cols-4 lg:gap-8 lg:pt-12 lg:pl-0">
-          {/* dimension line: vertical on mobile, horizontal on desktop */}
-          <div aria-hidden className="absolute top-0 bottom-0 left-[5px] w-px bg-zinc/15 lg:top-[5px] lg:right-0 lg:bottom-auto lg:h-px lg:w-auto lg:left-0">
-            <div data-line className="h-full w-full origin-top bg-chalk lg:origin-left" />
+        <ol data-steps className="relative mt-16 grid gap-12 sm:grid-cols-2 md:mt-20 lg:grid-cols-4 lg:gap-8">
+          {/* connecting line through the tile centres */}
+          <div aria-hidden className="absolute top-[30px] right-[12.5%] left-[12.5%] hidden h-px bg-graphite/20 lg:block">
+            <div data-line className="h-full w-full origin-left bg-graphite/25" />
           </div>
           {process.map((step) => (
-            <li key={step.n} data-step className="relative">
+            <li key={step.n} className="relative flex flex-col items-center text-center">
               <span
-                aria-hidden
-                className="absolute top-1.5 -left-8 size-[11px] -translate-y-1/2 rounded-full border-2 border-chalk bg-slate lg:-top-12 lg:left-0 lg:translate-y-0"
-              />
-              <span className="annotation text-chalk">{step.n}</span>
-              <h3 className="mt-2 text-2xl font-semibold tracking-tight text-zinc">{step.title}</h3>
-              <p className="mt-3 max-w-[22rem] leading-relaxed text-zinc/75">{step.text}</p>
+                data-tile
+                className="tabular relative grid size-[60px] place-items-center rounded-[12px] bg-chalk-deep text-[1.05rem] font-semibold tracking-wide text-white shadow-[0_10px_22px_-10px_rgb(214_31_31/0.7)]"
+              >
+                {step.n}
+              </span>
+              <div data-step-copy>
+                <h3 className="mt-7 text-[1.35rem] font-semibold tracking-[-0.02em]">{step.title}</h3>
+                <p className="mx-auto mt-3 max-w-[19rem] text-[1.02rem] leading-relaxed text-graphite/70">{step.text}</p>
+              </div>
             </li>
           ))}
         </ol>

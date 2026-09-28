@@ -31,25 +31,25 @@ export function SiteHeader() {
         scrolled || open ? "bg-ink/95 shadow-[0_1px_0_rgb(242_243_241/0.1)]" : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-18 max-w-[88rem] items-center gap-8 px-5 md:px-8">
-        <Link href="/" className="shrink-0" aria-label="Streha Premium – domov">
+      <div className="mx-auto flex h-20 max-w-[88rem] items-center gap-6 px-5 md:px-8 xl:grid xl:grid-cols-[1fr_auto_1fr]">
+        <Link href="/" className="shrink-0 xl:justify-self-start" aria-label="Streha Premium, domov">
           <Image
             src="/brand/logo-light.png"
             alt="Streha Premium"
             width={640}
             height={411}
             loading="eager"
-            className="h-11 w-auto"
+            className="h-14 w-auto"
           />
         </Link>
 
-        <nav aria-label="Glavni meni" className="hidden flex-1 xl:block">
-          <ul className="flex items-center gap-6">
+        <nav aria-label="Glavni meni" className="hidden xl:block">
+          <ul className="flex items-center gap-7">
             {nav.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="text-[0.9rem] font-medium text-zinc/80 transition-colors hover:text-zinc"
+                  className="text-[1.0625rem] font-semibold text-zinc/85 transition-colors hover:text-zinc"
                 >
                   {item.label}
                 </a>
@@ -58,15 +58,16 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="ml-auto hidden items-center gap-6 lg:flex">
+        <div className="ml-auto hidden items-center gap-5 lg:flex xl:ml-0 xl:justify-self-end">
           <a
             href={company.phoneHref}
-            className="tabular inline-flex items-center gap-2 text-[0.95rem] font-semibold text-zinc transition-colors hover:text-chalk"
+            aria-label={`Pokličite ${company.phone}`}
+            className="tabular inline-flex items-center gap-2 text-[1.0625rem] font-semibold text-zinc transition-colors hover:text-chalk"
           >
-            <Phone aria-hidden className="size-4" strokeWidth={2} />
-            {company.phone}
+            <Phone aria-hidden className="size-[1.1rem]" strokeWidth={2} />
+            <span className="xl:hidden min-[1400px]:inline">{company.phone}</span>
           </a>
-          <CtaLink size="sm" />
+          <CtaLink size="md" />
         </div>
 
         <button
@@ -74,7 +75,7 @@ export function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobilni-meni"
-          className="grid size-11 place-items-center text-zinc max-lg:ml-auto xl:hidden"
+          className="grid size-12 place-items-center text-zinc max-lg:ml-auto xl:hidden"
         >
           <span className="sr-only">{open ? "Zapri meni" : "Odpri meni"}</span>
           {open ? <X aria-hidden className="size-6" /> : <Menu aria-hidden className="size-6" />}
@@ -90,7 +91,7 @@ export function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-zinc/10 bg-ink px-5 pb-28 pt-6 xl:hidden"
+            className="h-[calc(100dvh-5rem)] overflow-y-auto border-t border-zinc/10 bg-ink px-5 pb-28 pt-6 xl:hidden"
           >
             <ul className="divide-y divide-zinc/10">
               {nav.map((item) => (

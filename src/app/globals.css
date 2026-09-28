@@ -163,7 +163,7 @@
 /* Hero intro: while the video plays, the still, shade, text and stamp wait.
    Only with JS, only on a first visit, only when motion is welcome. */
 @media (prefers-reduced-motion: no-preference) {
-  html.js:not(.hero-seen) #vrh[data-phase="intro"] :is([data-hero-still], [data-hero-shade], [data-hero-reveal], [data-hero-stamp]) {
+  html.js:not(.hero-seen) #vrh[data-phase="intro"] :is([data-hero-still], [data-hero-shade], [data-hero-reveal], [data-hero-stamp], [data-hero-trust]) {
     opacity: 0;
   }
   html.js:not(.hero-seen) #vrh[data-phase="intro"] [data-hero-reveal] {
@@ -181,5 +181,41 @@
   html.js:not(.hero-seen) #vrh[data-phase="intro"] [data-hero-intro-ui] {
     opacity: 1;
     pointer-events: auto;
+  }
+}
+
+/* Partner logo marquee: two identical lists, the track slides by one list width. */
+.marquee {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(calc(-50% - 0.625rem));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .marquee-track > ul[aria-hidden="true"] {
+    display: none;
+  }
+  .marquee-track > ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .marquee {
+    mask-image: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track > ul > li:nth-child(n + 6) {
+    display: none;
   }
 }

@@ -11,7 +11,7 @@ export function ServiceEnquiryLink({ service, label }: { service: ServiceId; lab
     <a
       href="#povprasevanje"
       onClick={() => window.dispatchEvent(new CustomEvent<ServiceId>(PREFILL_EVENT, { detail: service }))}
-      className="group/link inline-flex items-center gap-2 text-[0.95rem] font-semibold text-zinc transition-colors hover:text-chalk"
+      className="group/link inline-flex items-center gap-2 text-[0.95rem] font-semibold transition-colors hover:text-chalk-deep"
     >
       Povpraševanje
       <span className="sr-only"> za {label}</span>

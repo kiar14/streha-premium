@@ -13,6 +13,15 @@
   - a click, scroll or the "Preskoči" button skips to the end
 - **Built from:** `docs/research.md` and `PRODUCT.md`. The pictures are in `docs/asset-plan.md`.
 
+## Changes after the demo review (v3, 28 Sep 2026)
+- **Navigation** is centered, with bigger text and a bigger logo.
+- The **trust bar** now has 4 items (no red dot), each with an icon and bigger, bolder text. It's **part of the hero**: across the bottom on desktop, 2×2 cards under the text on phones.
+- The **hero text** moved much higher.
+- **Services** and **Projekti** are on light backgrounds. **Materiali** stays black and is now a moving loop of the real partner logos from their site, on white tiles so the brand colours show.
+- **Kako delamo** and **Mnenja strank** copy the provided references: centered eyebrow with red lines, centered heading, red number tiles, and a single-review carousel with 5★ (verified on Google).
+- The **CTA band** is much shorter.
+- All em and en dashes used as sentence punctuation became ", " (number ranges like 7.00–18.00 stay).
+
 ## What changed since v1
 - The **hero is now the house video**. It plays once when the page opens (no scroll animation). The text appears after it ends.
 - **4 picture frames** make up the video, with **no rain**.

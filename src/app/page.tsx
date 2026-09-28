@@ -3,7 +3,6 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { MobileActionBar } from "@/components/mobile-action-bar"
 import { Hero } from "@/components/sections/hero"
-import { TrustTape } from "@/components/sections/trust-tape"
 import { Services } from "@/components/sections/services"
 import { Enquiry } from "@/components/sections/enquiry"
 import { Warranty } from "@/components/sections/warranty"
@@ -47,7 +46,6 @@ export default function HomePage() {
       <SiteHeader />
       <main>
         <Hero />
-        <TrustTape />
         <Services />
         <Enquiry />
         <Warranty />

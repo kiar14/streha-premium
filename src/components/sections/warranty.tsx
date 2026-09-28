@@ -13,7 +13,7 @@ const rows = [
 
 export function Warranty() {
   return (
-    <section id="garancija" aria-labelledby="garancija-title" className="overflow-hidden bg-zinc py-24 text-graphite md:py-32">
+    <section id="garancija" aria-labelledby="garancija-title" className="overflow-hidden bg-white py-24 text-graphite md:py-32">
       <div className="mx-auto grid max-w-[88rem] items-center gap-14 px-5 md:px-8 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-6 xl:col-span-5">
           <h2 id="garancija-title" className="font-display text-[clamp(2.5rem,5.6vw,4.75rem)]">
@@ -21,7 +21,7 @@ export function Warranty() {
           </h2>
           <p className="mt-6 max-w-[34rem] text-lg leading-relaxed text-graphite/80">
             Obljub o kakovosti je na spletu veliko. Mi za vse naše storitve jamčimo in izstavimo 10-letno
-            garancijo za vodotesnost – pisno, s podpisom direktorja.
+            garancijo za vodotesnost, pisno, s podpisom direktorja.
           </p>
 
           <dl className="mt-10 border-t border-graphite/20">

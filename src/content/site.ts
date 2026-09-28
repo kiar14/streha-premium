@@ -31,14 +31,6 @@ export const nav = [
   { label: "Pogosta vprašanja", href: "/pogosta-vprasanja" },
 ] as const
 
-export const trust = [
-  "10 let pisne garancije na vodotesnost",
-  "Več kot 20 let izkušenj",
-  "Brezplačen ogled in ponudba",
-  "150 zaključenih projektov",
-  "Slovenija in Avstrija",
-] as const
-
 export type ServiceId = "nove-strehe" | "obnova" | "kleparstvo" | "ravne-strehe" | "zlebovi"
 
 export const services: {
@@ -203,23 +195,26 @@ export const faqGroups: { id: string; title: string; items: FaqItem[] }[] = [
   },
 ]
 
-/** Positive reviews from the Google Business Profile, quoted as published (Sep 2026). */
+/** Positive reviews from the Google Business Profile, quoted as published; each is 5 stars on Google (checked Sep 2026). */
 export const reviews = [
   {
     quote:
       "Zelo sem zadovoljen s storitvijo podjetja Streha Premium d.o.o. Ekipa je bila profesionalna, prijazna in zelo odzivna skozi celoten projekt. Delo je bilo opravljeno kakovostno, pravočasno in z veliko pozornostjo do podrobnosti.",
     name: "Jessica Chen",
+    stars: 5,
     note: "Mnenje na Googlu",
   },
   {
     quote:
       "Zelo zadovoljen z opravljenim delom. Ekipa je bila točna, prijazna in profesionalna. Delo je bilo opravljeno kakovostno, hitro in natančno. Priporočam vsakomur, ki išče zanesljive mojstre za streho. Hvala!",
     name: "Marko Gabor",
+    stars: 5,
     note: "Mnenje na Googlu",
   },
   {
     quote: "Najboljši izvajalec krovskih del v Sloveniji.",
     name: "Gideon King",
-    note: "Mnenje na Googlu · prevedeno iz angleščine",
+    stars: 5,
+    note: "Mnenje na Googlu, prevedeno iz angleščine",
   },
 ] as const

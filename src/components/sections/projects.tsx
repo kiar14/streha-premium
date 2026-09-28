@@ -10,13 +10,13 @@ const layout = [
 
 export function Projects() {
   return (
-    <section id="projekti" aria-labelledby="projekti-title" className="bg-slate py-24 md:py-32">
+    <section id="projekti" aria-labelledby="projekti-title" className="bg-zinc py-24 text-graphite md:py-32">
       <div className="mx-auto max-w-[88rem] px-5 md:px-8">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h2 id="projekti-title" className="font-display text-[clamp(2.5rem,5.6vw,4.75rem)] text-zinc lg:col-span-7">
+          <h2 id="projekti-title" className="font-display text-[clamp(2.5rem,5.6vw,4.75rem)] lg:col-span-7">
             Naše strehe.
           </h2>
-          <p className="max-w-[30rem] text-lg leading-relaxed text-zinc/75 lg:col-span-5 lg:justify-self-end">
+          <p className="max-w-[30rem] text-lg leading-relaxed text-graphite/75 lg:col-span-5 lg:justify-self-end">
             Posnetki z naših gradbišč. Brez fotografij iz kataloga.
           </p>
         </div>
@@ -26,7 +26,7 @@ export function Projects() {
           {projects.map((p, i) => (
             <li key={p.src} className={layout[i]}>
               <figure className="flex h-full flex-col">
-                <div className="relative min-h-0 flex-1 overflow-hidden bg-ink">
+                <div className="relative min-h-0 flex-1 overflow-hidden bg-zinc-2">
                   <Image
                     src={p.src}
                     alt={p.title}
@@ -35,7 +35,7 @@ export function Projects() {
                     className="object-cover transition-transform duration-[1.4s] ease-out hover:scale-[1.03]"
                   />
                 </div>
-                <figcaption className="mt-3 text-[0.95rem] font-medium text-zinc/85">{p.title}</figcaption>
+                <figcaption className="mt-3 text-[0.95rem] font-medium text-graphite/85">{p.title}</figcaption>
               </figure>
             </li>
           ))}
