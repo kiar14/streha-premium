@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { AnimatePresence, motion } from "motion/react"
 import { Menu, Phone, X } from "lucide-react"
 import { company, nav } from "@/content/site"
@@ -31,19 +32,19 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-18 max-w-[88rem] items-center gap-8 px-5 md:px-8">
-        <a href="#vrh" className="shrink-0" aria-label="Streha Premium – na vrh strani">
+        <Link href="/" className="shrink-0" aria-label="Streha Premium – domov">
           <Image
             src="/brand/logo-light.png"
             alt="Streha Premium"
             width={640}
             height={411}
-            preload
+            loading="eager"
             className="h-11 w-auto"
           />
-        </a>
+        </Link>
 
-        <nav aria-label="Glavni meni" className="hidden flex-1 lg:block">
-          <ul className="flex items-center gap-7">
+        <nav aria-label="Glavni meni" className="hidden flex-1 xl:block">
+          <ul className="flex items-center gap-6">
             {nav.map((item) => (
               <li key={item.href}>
                 <a
@@ -73,7 +74,7 @@ export function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobilni-meni"
-          className="ml-auto grid size-11 place-items-center text-zinc lg:hidden"
+          className="grid size-11 place-items-center text-zinc max-lg:ml-auto xl:hidden"
         >
           <span className="sr-only">{open ? "Zapri meni" : "Odpri meni"}</span>
           {open ? <X aria-hidden className="size-6" /> : <Menu aria-hidden className="size-6" />}
@@ -89,7 +90,7 @@ export function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-zinc/10 bg-ink px-5 pb-28 pt-6 lg:hidden"
+            className="h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-zinc/10 bg-ink px-5 pb-28 pt-6 xl:hidden"
           >
             <ul className="divide-y divide-zinc/10">
               {nav.map((item) => (

@@ -16,13 +16,14 @@ export function Process() {
       const mm = gsap.matchMedia()
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         const tl = gsap.timeline({
-          scrollTrigger: { trigger: "[data-steps]", start: "top 78%", end: "bottom 60%", scrub: 0.8 },
+          scrollTrigger: { trigger: "[data-steps]", start: "top 78%", once: true },
         })
-        tl.fromTo("[data-line]", { scaleX: 0, scaleY: 0 }, { scaleX: 1, scaleY: 1, ease: "none", duration: 1 }, 0).from(
-          "[data-step]",
-          { opacity: 0.15, stagger: 0.25, duration: 0.25, ease: "power1.out" },
+        tl.fromTo(
+          "[data-line]",
+          { scaleX: 0, scaleY: 0 },
+          { scaleX: 1, scaleY: 1, ease: "power2.inOut", duration: 1.6 },
           0,
-        )
+        ).from("[data-step]", { opacity: 0, y: 16, stagger: 0.3, duration: 0.8, ease: "expo.out" }, 0.15)
       })
     },
     { scope },

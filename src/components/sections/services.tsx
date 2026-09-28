@@ -24,7 +24,7 @@ export function Services() {
             <li
               key={s.id}
               className={cn(
-                "relative flex flex-col border border-zinc/14 bg-slate transition-colors duration-500 hover:border-zinc/35",
+                "group/card relative flex flex-col border border-zinc/14 bg-slate transition-colors duration-500 hover:border-zinc/35",
                 i < 2 ? "lg:col-span-3" : "lg:col-span-2",
               )}
             >
@@ -32,30 +32,17 @@ export function Services() {
               <span aria-hidden className="absolute top-4 right-4 z-10 size-3 rounded-full border border-zinc/40 bg-ink" />
 
               <div className={cn("relative overflow-hidden", i < 2 ? "aspect-[16/10]" : "aspect-[4/3]")}>
-                {s.image ? (
-                  <>
-                    <Image
-                      src={s.image}
-                      alt={s.imageAlt}
-                      fill
-                      sizes={i < 2 ? "(min-width: 1024px) 44vw, (min-width: 768px) 50vw, 100vw" : "(min-width: 1024px) 29vw, (min-width: 768px) 50vw, 100vw"}
-                      className="object-cover transition-transform duration-[1.2s] ease-out hover:scale-[1.03]"
-                    />
-                    {s.temporary && (
-                      <span className="annotation absolute bottom-3 left-3 bg-ink/85 px-2 py-1 text-[0.625rem] text-zinc/80">
-                        Začasna slika
-                      </span>
-                    )}
-                  </>
-                ) : (
-                  <div className="absolute inset-0 grid place-items-center bg-slate-2 [background-image:repeating-linear-gradient(135deg,rgb(242_243_241/0.06)_0_1px,transparent_1px_14px)]">
-                    <span className="annotation border border-dashed border-zinc/30 px-3 py-2 text-center text-[0.625rem] leading-relaxed text-zinc/60">
-                      Slika P05 · ravna streha
-                      <br />
-                      glej asset-plan
-                    </span>
-                  </div>
-                )}
+                <Image
+                  src={s.image}
+                  alt={s.imageAlt}
+                  fill
+                  sizes={
+                    i < 2
+                      ? "(min-width: 1024px) 44vw, (min-width: 768px) 50vw, 100vw"
+                      : "(min-width: 1024px) 29vw, (min-width: 768px) 50vw, 100vw"
+                  }
+                  className="object-cover transition-transform duration-[1.4s] ease-out group-hover/card:scale-[1.04]"
+                />
               </div>
 
               <div className="flex flex-1 flex-col p-6 md:p-7">

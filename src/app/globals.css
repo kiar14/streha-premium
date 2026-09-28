@@ -20,7 +20,6 @@
   --color-clay: #b4523a;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-snap: cubic-bezier(0.2, 1.4, 0.4, 1);
 }
 
 @theme inline {
@@ -118,7 +117,8 @@
   font-family: var(--font-archivo);
   font-variation-settings: "wdth" 66;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
+  word-spacing: 0.08em;
   line-height: 0.92;
 }
 
@@ -160,28 +160,23 @@
   }
 }
 
-/* "Streha nastaja": rain only runs while the last stage is on screen. */
-@keyframes rain-fall {
-  to {
-    transform: translateY(560px);
-  }
-}
-@keyframes drip {
-  0% {
-    transform: translateY(0);
+/* Hero intro: while the video plays, the still, shade, text and stamp wait.
+   Only with JS, only on a first visit, only when motion is welcome. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js:not(.hero-seen) #vrh[data-phase="intro"] :is([data-hero-still], [data-hero-shade], [data-hero-reveal], [data-hero-stamp]) {
     opacity: 0;
   }
-  30% {
+}
+
+/* Skip button and progress line exist only during the first-visit intro. */
+[data-hero-intro-ui] {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js:not(.hero-seen) #vrh[data-phase="intro"] [data-hero-intro-ui] {
     opacity: 1;
+    pointer-events: auto;
   }
-  100% {
-    transform: translateY(18px);
-    opacity: 0;
-  }
-}
-#streha-nastaja[data-raining] [data-rain] {
-  animation: rain-fall 0.9s linear infinite;
-}
-#streha-nastaja[data-raining] [data-drip] {
-  animation: drip 1.1s ease-in infinite;
 }

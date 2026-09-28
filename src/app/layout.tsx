@@ -33,7 +33,15 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="sl" className={archivo.variable}>
+    <html lang="sl" className={archivo.variable} suppressHydrationWarning>
+      <head>
+        {/* Before first paint: mark JS, and skip the hero intro for visitors who already saw it. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add("js");try{if(sessionStorage.getItem("sp-hero-seen")==="1")document.documentElement.classList.add("hero-seen")}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="min-h-dvh">
         <SmoothScroll>{children}</SmoothScroll>
       </body>

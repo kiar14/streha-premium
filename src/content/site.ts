@@ -19,11 +19,12 @@ export const company = {
 } as const
 
 export const nav = [
-  { label: "Storitve", href: "#storitve" },
-  { label: "Kako delamo", href: "#kako-delamo" },
-  { label: "Garancija", href: "#garancija" },
-  { label: "Projekti", href: "#projekti" },
-  { label: "O nas", href: "#o-nas" },
+  { label: "Storitve", href: "/#storitve" },
+  { label: "Garancija", href: "/#garancija" },
+  { label: "Kako delamo", href: "/#kako-delamo" },
+  { label: "Projekti", href: "/#projekti" },
+  { label: "O nas", href: "/#o-nas" },
+  { label: "Pogosta vprašanja", href: "/pogosta-vprasanja" },
 ] as const
 
 export const trust = [
@@ -34,14 +35,6 @@ export const trust = [
   "Slovenija in Avstrija",
 ] as const
 
-export const roofBeats = [
-  { n: "01", title: "Ostrešje", text: "Trdna osnova. Konstrukcijo preverimo, preden položimo prvo plast." },
-  { n: "02", title: "Paroprepustna folija", text: "Druga linija obrambe. Vlaga iz hiše ven, voda od zunaj ne noter." },
-  { n: "03", title: "Letve in kritina", text: "Opečna, cementna ali pločevinasta. Svetujemo, katera je prava za vaš naklon." },
-  { n: "04", title: "Kleparski zaključki", text: "Obrobe, žlebovi in snegobrani, izdelani po meri vaše strehe." },
-  { n: "05", title: "10 let vodotesno", text: "Pisna garancija na vodotesnost za vsa naša dela." },
-] as const
-
 export type ServiceId = "nove-strehe" | "obnova" | "kleparstvo" | "ravne-strehe" | "zlebovi"
 
 export const services: {
@@ -49,53 +42,48 @@ export const services: {
   title: string
   text: string
   spec: string
-  image: string | null
+  image: string
   imageAlt: string
-  temporary?: boolean
 }[] = [
   {
     id: "nove-strehe",
     title: "Nove strehe in prekrivanje",
     text: "Opečne, cementne in pločevinaste kritine za novogradnje in zamenjave celotnih streh.",
     spec: "Tondach · Creaton · Bramac · Eternit · Esal · Trimo",
-    image: "/photos/projekt-rdeca-kritina.webp",
-    imageAlt: "Nova opečna kritina s strešnimi okni",
-    temporary: true,
+    image: "/storitve/nove-strehe.webp",
+    imageAlt: "Nova opečna kritina na beli družinski hiši s strešnim oknom",
   },
   {
     id: "obnova",
     title: "Obnova in popravila",
     text: "Celovita obnova, sanacije, zamenjava poškodovanih strešnikov in hitri posegi po neurju.",
     spec: "Pregled · sanacija · zamenjava",
-    image: "/photos/projekt-hisa-odri.webp",
-    imageAlt: "Hiša z odrom med obnovo strehe",
-    temporary: true,
+    image: "/storitve/obnova-popravila.webp",
+    imageAlt: "Obnova strehe: stara kritina, nova folija z letvami in nova antracitna kritina",
   },
   {
     id: "kleparstvo",
     title: "Kleparska dela",
     text: "Obrobe vseh vrst, kritine iz ravne pločevine in snegobrani, izdelani po meri.",
     spec: "Obrobe · ravna pločevina · snegobrani",
-    image: "/photos/zacasno-kleparstvo.webp",
-    imageAlt: "Temna pločevinasta kritina s slemenom in obrobami",
-    temporary: true,
+    image: "/storitve/kleparska-dela.webp",
+    imageAlt: "Kleparska obroba dimnika na antracitni pločevinasti kritini",
   },
   {
     id: "ravne-strehe",
     title: "Ravne strehe in hidroizolacije",
     text: "Bitumenski varilni trakovi, mehke PVC in EPDM folije za popolno tesnjenje ravnih streh.",
     spec: "Bitumen · PVC · EPDM · Sika",
-    image: null,
-    imageAlt: "",
+    image: "/storitve/ravne-strehe.webp",
+    imageAlt: "Ravna streha s svetlo sivo PVC hidroizolacijo in antracitno obrobo atike",
   },
   {
     id: "zlebovi",
     title: "Žlebovi in odvodnjavanje",
     text: "Demontaža, montaža in prilagoditev žlebov in odtočnih cevi, da voda odteka stran od hiše.",
     spec: "Aluminij · baker · PVC",
-    image: "/photos/projekt-temna-kritina.webp",
-    imageAlt: "Hiša z novo antracitno kritino in žlebovi",
-    temporary: true,
+    image: "/storitve/zlebovi.webp",
+    imageAlt: "Antracitni žleb z odtočno cevjo in snegobrani na vogalu hiše",
   },
 ]
 
@@ -108,9 +96,8 @@ export const process = [
 
 export const projects = [
   { src: "/photos/projekt-temna-kritina.webp", w: 1590, h: 1080, title: "Nova antracitna kritina s strešnimi okni" },
-  { src: "/photos/ekipa-letve-folija.webp", w: 1010, h: 1530, title: "Letve na paroprepustni foliji" },
-  { src: "/photos/projekt-hisa-odri.webp", w: 1800, h: 1350, title: "Nova streha na dvonadstropni hiši" },
   { src: "/photos/projekt-popravilo.webp", w: 782, h: 1182, title: "Popravilo strehe stanovanjske hiše" },
+  { src: "/photos/projekt-hisa-odri.webp", w: 1800, h: 1350, title: "Nova streha na dvonadstropni hiši" },
   { src: "/photos/projekt-rdeca-kritina.webp", w: 600, h: 400, title: "Opečna kritina in strešna okna" },
 ] as const
 
@@ -127,25 +114,99 @@ export const brands = [
   "Italpaneli",
 ] as const
 
-export const faq = [
+export type FaqItem = { q: string; a: string; confirm?: boolean }
+
+export const faqGroups: { id: string; title: string; items: FaqItem[] }[] = [
   {
-    q: "Koliko stane ogled strehe?",
-    a: "Ogled in ponudba sta brezplačna. Pošljite povpraševanje ali pokličite 041 815 559 in dogovorimo se za termin.",
+    id: "ogled-in-ponudba",
+    title: "Ogled in ponudba",
+    items: [
+      {
+        q: "Koliko stane ogled strehe?",
+        a: "Ogled in ponudba sta brezplačna. Pošljite povpraševanje ali pokličite 041 815 559 in dogovorimo se za termin.",
+      },
+      {
+        q: "Kako hitro pridete na ogled?",
+        a: "Termin ogleda se dogovorimo ob prvem klicu, praviloma v nekaj dneh. Pri nujnih primerih, na primer po neurju, pridemo čim prej.",
+        confirm: true,
+      },
+      {
+        q: "Kaj potrebujete od mene za ponudbo?",
+        a: "Dovolj je, da nam poveste, kje je streha in kaj potrebujete. Mere, naklon in stanje strehe preverimo sami na ogledu, nato pripravimo pregledno pisno ponudbo z obsegom del, materialom in časovnim okvirom.",
+      },
+    ],
   },
   {
-    q: "Kaj pokriva garancija?",
-    a: "Za vse naše storitve izdamo pisno 10-letno garancijo za vodotesnost, ki jo podpiše direktor podjetja Stefan Gabor.",
+    id: "garancija",
+    title: "Garancija",
+    items: [
+      {
+        q: "Kaj pokriva garancija?",
+        a: "Za vse naše storitve jamčimo in izstavimo pisno garancijo za vodotesnost, ki jo podpiše direktor podjetja Stefan Gabor.",
+      },
+      { q: "Kako dolgo velja garancija?", a: "Garancija za vodotesnost velja 10 let." },
+      {
+        q: "Kaj naredim, če streha v času garancije pušča?",
+        a: "Pokličite nas na 041 815 559. Streho pregledamo in napako v okviru garancije odpravimo.",
+        confirm: true,
+      },
+    ],
   },
   {
-    q: "Kako hitro lahko začnete?",
-    a: "Z deli lahko začnemo takoj po ogledu, ko potrdite ponudbo. Točen termin je odvisen od obsega del in vremena.",
+    id: "izvedba-in-roki",
+    title: "Izvedba in roki",
+    items: [
+      {
+        q: "Kako hitro lahko začnete z deli?",
+        a: "Z deli lahko začnemo takoj po ogledu, ko potrdite ponudbo. Točen termin je odvisen od obsega del in vremena.",
+      },
+      {
+        q: "Koliko časa traja menjava strehe?",
+        a: "Odvisno od velikosti in zahtevnosti strehe. Okviren čas izvedbe vedno zapišemo v ponudbo.",
+        confirm: true,
+      },
+      {
+        q: "Ali za menjavo strehe potrebujem gradbeno dovoljenje?",
+        a: "To je odvisno od vrste posega in objekta. Ob ogledu vam povemo, kaj velja za vašo streho.",
+        confirm: true,
+      },
+    ],
   },
   {
-    q: "Kje izvajate dela?",
-    a: "Po vsej Sloveniji in v Avstriji. Sedež podjetja je v Ljubljani, na Štihovi ulici 13.",
+    id: "kritine-in-materiali",
+    title: "Kritine in materiali",
+    items: [
+      {
+        q: "Katere kritine vgrajujete?",
+        a: "Opečne (Tondach, Creaton), cementne (Bramac, Eternit, Esal) in pločevinaste (Gerard, Metro Bond, Trimo, Isopan, Italpaneli).",
+      },
+      {
+        q: "Katera kritina je prava za mojo streho?",
+        a: "To je odvisno od naklona, konstrukcije in vaših želja. Ob ogledu preverimo streho in svetujemo, katera kritina je primerna.",
+      },
+      {
+        q: "Ali delate tudi ravne strehe?",
+        a: "Da. Ravne strehe izvajamo z bitumenskimi varilnimi trakovi, mehkimi PVC folijami ali EPDM folijami.",
+      },
+    ],
   },
   {
-    q: "Katere kritine vgrajujete?",
-    a: "Opečne (Tondach, Creaton), cementne (Bramac, Eternit, Esal) in pločevinaste (Gerard, Metro Bond, Trimo, Isopan, Italpaneli). Ob ogledu svetujemo, katera je primerna za naklon in konstrukcijo vaše strehe.",
+    id: "obmocje-in-placilo",
+    title: "Območje in plačilo",
+    items: [
+      { q: "Kje izvajate dela?", a: "Po vsej Sloveniji in v Avstriji. Sedež podjetja je v Ljubljani, na Štihovi ulici 13." },
+      {
+        q: "Kakšne so možnosti plačila?",
+        a: "Ponujamo več možnosti plačila. Podrobnosti dogovorimo ob ponudbi.",
+        confirm: true,
+      },
+    ],
   },
+]
+
+/** Slots for real customer reviews. Text comes from the client, with permission. */
+export const reviewSlots = [
+  { work: "Menjava kritine" },
+  { work: "Popravilo po neurju" },
+  { work: "Nova streha" },
 ] as const

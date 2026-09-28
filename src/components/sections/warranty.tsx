@@ -49,7 +49,7 @@ export function Warranty() {
         </div>
 
         <div className="relative lg:col-span-6 xl:col-span-6 xl:col-start-7">
-          <div aria-hidden className="absolute -inset-x-10 top-1/2 h-px bg-graphite/15" />
+          <div aria-hidden className="absolute -inset-x-10 top-1/2 hidden h-px bg-graphite/15 lg:block" />
           <a
             href="/docs/garancija-10-let.webp"
             target="_blank"

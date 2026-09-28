@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function CtaLink({
-  href = "#povprasevanje",
+  href = "/#povprasevanje",
   children = "Pošlji povpraševanje",
   className,
   size = "md",
