@@ -178,14 +178,14 @@ export function Hero() {
         <button
           type="button"
           data-hero-intro-ui
-          className="absolute right-3 bottom-4 inline-flex items-center gap-1.5 rounded-full bg-ink/70 px-3.5 py-2 text-sm font-medium text-zinc backdrop-blur-sm transition-colors hover:bg-ink/90 lg:right-8 lg:bottom-8"
+          className="absolute right-3 bottom-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-ink/70 px-3.5 py-2 text-sm font-medium text-zinc backdrop-blur-sm transition-colors hover:bg-ink/90 lg:right-8 lg:bottom-8"
         >
           Preskoči <ChevronsRight aria-hidden className="size-4" />
         </button>
       </div>
 
-      <div className="relative mx-auto max-w-[88rem] px-5 pt-8 pb-14 md:px-8 lg:flex lg:h-full lg:items-end lg:pt-0 lg:pb-[clamp(3rem,9vh,6.5rem)]">
-        <div data-hero-reveal className="max-w-[58rem]">
+      <div className="relative mx-auto max-w-[88rem] px-5 pt-8 pb-14 md:px-8 lg:pointer-events-none lg:flex lg:h-full lg:items-end lg:pt-0 lg:pb-[clamp(3rem,9vh,6.5rem)]">
+        <div data-hero-reveal className="pointer-events-auto max-w-[58rem]">
           <h1
             id="hero-title"
             data-hero-title

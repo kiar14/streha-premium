@@ -38,7 +38,8 @@
 - **Hours:** the site says two different things:
   - Header: **Mon–Sat 08:00–19:00**
   - Contact page footer: **Mon–Fri 08:00–19:00, Sat 09:00–18:00**
-  - → use the second (more detailed) version in the demo and **confirm with the client**.
+  - Google Business Profile: **Mon–Fri 07:00–18:00, Sat closed, Sun 07:00–18:00**
+  - → **The user decided to use the Google hours** (28 Sep).
 - **Facebook:** https://www.facebook.com/profile.php?id=61580442830536
 - **WhatsApp chat widget** on the site still shows the old **"Streha Expert"** name and logo, so this needs fixing.
 - **Service area:** "Dela opravljamo po vsej Sloveniji", and they say they have expanded to neighbouring countries.

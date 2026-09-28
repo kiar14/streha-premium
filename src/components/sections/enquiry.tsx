@@ -124,7 +124,7 @@ export function Enquiry() {
                 >
                   Pošlji novo povpraševanje
                 </button>
-                <p className="mt-10 text-xs text-graphite/50">Demo obrazec – podatki se ne pošiljajo ali shranjujejo.</p>
+                <p className="mt-10 text-xs text-graphite/65">Demo obrazec – podatki se ne pošiljajo ali shranjujejo.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-x-6 gap-y-6 sm:grid-cols-2">
@@ -174,7 +174,7 @@ export function Enquiry() {
                       </>
                     )}
                   </button>
-                  <p className="max-w-[15rem] text-xs leading-relaxed text-graphite/55 sm:text-right">
+                  <p className="max-w-[15rem] text-xs leading-relaxed text-graphite/65 sm:text-right">
                     Demo obrazec. Podatki se ne pošiljajo ali shranjujejo.
                   </p>
                 </div>
@@ -200,7 +200,7 @@ type ControlProps = {
 }
 
 const controlClass =
-  "h-13 w-full rounded-[10px] border border-graphite/18 bg-white px-4 text-base text-graphite placeholder:text-graphite/40 shadow-[inset_0_1px_1px_rgb(21_23_26/0.03)] transition-[border-color,box-shadow] duration-200 hover:border-graphite/35 focus:border-graphite focus:outline-none focus:ring-4 focus:ring-graphite/8 aria-invalid:border-chalk-deep aria-invalid:ring-chalk-deep/10"
+  "h-13 w-full rounded-[10px] border border-graphite/18 bg-white px-4 text-base text-graphite placeholder:text-graphite/60 shadow-[inset_0_1px_1px_rgb(21_23_26/0.03)] transition-[border-color,box-shadow] duration-200 hover:border-graphite/35 focus:border-graphite focus:outline-none focus:ring-4 focus:ring-graphite/8 aria-invalid:border-chalk-deep aria-invalid:ring-chalk-deep/10"
 
 function Field({
   label,
@@ -221,7 +221,7 @@ function Field({
     <div className={cn("flex flex-col", className)}>
       <label htmlFor={id} className="mb-2 text-[0.95rem] font-medium text-graphite">
         {label}
-        {optional && <span className="ml-1.5 text-sm font-normal text-graphite/50">(neobvezno)</span>}
+        {optional && <span className="ml-1.5 text-sm font-normal text-graphite/65">(neobvezno)</span>}
       </label>
       {children({
         id,
@@ -257,7 +257,7 @@ function ServiceSelect({
           </option>
         ))}
       </select>
-      <ChevronDown aria-hidden className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 text-graphite/60" />
+      <ChevronDown aria-hidden className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 text-graphite/65" />
     </div>
   )
 }

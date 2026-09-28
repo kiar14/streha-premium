@@ -1,6 +1,5 @@
 import Image from "next/image"
 import { company } from "@/content/site"
-import { Potrdi } from "@/components/potrdi"
 
 const facts = [
   ["Vodi", `${company.director}, direktor`],
@@ -32,7 +31,6 @@ export function About() {
                 Stefan Gabor
               </span>
             </div>
-            <Potrdi className="absolute -top-3 left-2 bg-zinc">foto</Potrdi>
           </div>
         </div>
 
@@ -49,7 +47,7 @@ export function About() {
           <dl className="mt-10 grid border-t border-graphite/20 sm:grid-cols-2 sm:gap-x-10">
             {facts.map(([k, v]) => (
               <div key={k} className="flex items-baseline justify-between gap-4 border-b border-graphite/20 py-3.5">
-                <dt className="annotation text-graphite/60">{k}</dt>
+                <dt className="annotation text-graphite/65">{k}</dt>
                 <dd className="tabular text-right font-semibold">{v}</dd>
               </div>
             ))}

@@ -1,6 +1,5 @@
 import Image from "next/image"
 import { company, nav } from "@/content/site"
-import { Potrdi } from "@/components/potrdi"
 import { FacebookIcon } from "@/components/icons"
 
 export function SiteFooter() {
@@ -40,9 +39,7 @@ export function SiteFooter() {
               {company.street}, {company.city}
             </li>
           </ul>
-          <h2 className="annotation mt-8 flex items-center gap-3 text-zinc/50">
-            Delovni čas <Potrdi />
-          </h2>
+          <h2 className="annotation mt-8 text-zinc/50">Delovni čas</h2>
           <dl className="mt-4 space-y-1.5">
             {company.hours.map((h) => (
               <div key={h.days} className="flex gap-4">
@@ -73,9 +70,17 @@ export function SiteFooter() {
             <br />
             {company.street}, {company.city}
           </p>
-          <p className="mt-3 flex flex-wrap items-center gap-2">
-            Davčna in matična številka <Potrdi />
-          </p>
+          <dl className="tabular mt-3 space-y-1">
+            <div className="flex gap-2">
+              <dt>Davčna št.:</dt>
+              <dd className="text-zinc">{company.taxId}</dd>
+            </div>
+            <div className="flex gap-2">
+              <dt>Matična št.:</dt>
+              <dd className="text-zinc">{company.registrationNo}</dd>
+            </div>
+          </dl>
+          <p className="mt-1 text-sm text-zinc/50">Nismo zavezanci za DDV.</p>
         </div>
       </div>
 

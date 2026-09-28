@@ -31,6 +31,8 @@ const localBusiness = {
     addressCountry: "SI",
   },
   areaServed: ["SI", "AT"],
+  taxID: company.taxId,
+  openingHours: ["Mo-Fr 07:00-18:00", "Su 07:00-18:00"],
   founder: { "@type": "Person", name: company.director },
   sameAs: [company.facebook],
 }

@@ -1,6 +1,5 @@
 import Image from "next/image"
 import { projects } from "@/content/site"
-import { Potrdi } from "@/components/potrdi"
 
 const layout = [
   "aspect-[3/2] sm:col-span-2 lg:col-span-8 lg:aspect-auto lg:h-[34rem]",
@@ -36,10 +35,7 @@ export function Projects() {
                     className="object-cover transition-transform duration-[1.4s] ease-out hover:scale-[1.03]"
                   />
                 </div>
-                <figcaption className="mt-3 flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-[0.95rem] font-medium text-zinc/85">{p.title}</span>
-                  <Potrdi>lokacija</Potrdi>
-                </figcaption>
+                <figcaption className="mt-3 text-[0.95rem] font-medium text-zinc/85">{p.title}</figcaption>
               </figure>
             </li>
           ))}

@@ -48,8 +48,9 @@ The website for **Streha Premium d.o.o.**, a Ljubljana-based family roofing comp
 - **Language:** Slovenian (formal "vi").
 - **Primary action:** the "Pošlji povpraševanje" button leading to the enquiry form. Phone and WhatsApp stay secondary but always reachable.
 - **Undecided or unconfirmed:**
-  - **Opening hours** (three versions exist: site header Mon–Sat 08–19; site footer Mon–Fri 08–19 and Sat 09–18; Google Mon–Fri 07–18 and Sun 07–18)
-  - Registration number and VAT status
+  - Typical lead time from visit to start
+- **Opening hours (decided by user):** as on the Google Business Profile: Mon–Fri 07:00–18:00, Sat closed, Sun 07:00–18:00.
+- **Company numbers (AJPES via Bizi):** tax number 33575843, registration number 8071934000, not a VAT payer.
   - Typical lead time from visit to start
   - Official partner status with the brands
 
@@ -70,8 +71,8 @@ The website for **Streha Premium d.o.o.**, a Ljubljana-based family roofing comp
 - **Figures the user approved for use:** **150 uspešnih projektov**, **12 sodelavcev**.
 - Owner-stated on the Google profile: free site visit and quote; work in Slovenia and Austria.
 - **Must not be used or fabricated:**
-  - Star ratings or review counts (the site's 4.8★/44 is unfounded; Google shows 4.2★ from 5 questionable reviews)
-  - Testimonials or customer quotes
+  - Star ratings or review counts (the site's 4.8★/44 is unfounded)
+  - Invented testimonials. The user decided to show the 3 positive Google reviews (Jessica Chen, Marko Gabor, Gideon King) verbatim, attributed to Google.
   - Stock "customer" faces
   - "5 certificates and awards"
   - Images taken from other roofers' sites

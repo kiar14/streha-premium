@@ -1,7 +1,13 @@
 # Demo plan – Streha Premium d.o.o.
 
 - **Step:** A2 · Demo plan · **v2**, 28 Sep 2026 (after your review)
-- **Status:** ✅ **Approved and built (A3)**, 28 Sep 2026. The open questions were not answered, so the recommended defaults are used:
+- **Status:** ✅ **Approved, built (A3) and checked (A4)**, 28 Sep 2026.
+  - Reviews: the 3 positive Google reviews, verbatim.
+  - Opening hours: from the Google profile.
+  - Company numbers: from AJPES.
+  - Stefan's portrait: placeholder.
+  - Warranty: shown as the image (no PDF).
+- Earlier, the open questions were answered with the recommended defaults. The open questions were not answered, so the recommended defaults are used:
   - reviews are marked placeholders
   - the header stays visible during the video
   - a click, scroll or the "Preskoči" button skips to the end

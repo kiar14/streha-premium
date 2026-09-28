@@ -166,6 +166,9 @@
   html.js:not(.hero-seen) #vrh[data-phase="intro"] :is([data-hero-still], [data-hero-shade], [data-hero-reveal], [data-hero-stamp]) {
     opacity: 0;
   }
+  html.js:not(.hero-seen) #vrh[data-phase="intro"] [data-hero-reveal] {
+    pointer-events: none;
+  }
 }
 
 /* Skip button and progress line exist only during the first-visit intro. */

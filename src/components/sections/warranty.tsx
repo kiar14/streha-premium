@@ -2,7 +2,6 @@ import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { company } from "@/content/site"
 import { CtaLink } from "@/components/cta-link"
-import { Potrdi } from "@/components/potrdi"
 
 const rows = [
   ["Kaj", "Garancija za vodotesnost"],
@@ -28,7 +27,7 @@ export function Warranty() {
           <dl className="mt-10 border-t border-graphite/20">
             {rows.map(([k, v]) => (
               <div key={k} className="grid grid-cols-[8.5rem_1fr] gap-4 border-b border-graphite/20 py-3.5">
-                <dt className="annotation pt-0.5 text-graphite/60">{k}</dt>
+                <dt className="annotation pt-0.5 text-graphite/65">{k}</dt>
                 <dd className="font-medium">{v}</dd>
               </div>
             ))}
@@ -44,7 +43,6 @@ export function Warranty() {
             >
               Odpri garancijski list <ArrowUpRight aria-hidden className="size-4" />
             </a>
-            <Potrdi>PDF različica</Potrdi>
           </div>
         </div>
 
@@ -65,7 +63,7 @@ export function Warranty() {
               className="h-auto w-full"
             />
           </a>
-          <span className="annotation absolute -bottom-2 left-1/2 -translate-x-1/2 translate-y-full whitespace-nowrap text-graphite/55 max-lg:hidden">
+          <span className="annotation absolute -bottom-2 left-1/2 -translate-x-1/2 translate-y-full whitespace-nowrap text-graphite/65 max-lg:hidden">
             Izvirnik garancijskega lista
           </span>
         </div>

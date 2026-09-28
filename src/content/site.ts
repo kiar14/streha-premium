@@ -1,5 +1,4 @@
 // All copy for the demo lives here. Only facts from docs/research.md and PRODUCT.md.
-// Items marked `confirm: true` are shown with a "potrdi" marker until the client confirms them.
 
 export const company = {
   name: "Streha Premium d.o.o.",
@@ -12,9 +11,14 @@ export const company = {
   street: "Štihova ulica 13",
   city: "1000 Ljubljana",
   facebook: "https://www.facebook.com/profile.php?id=61580442830536",
+  googleProfile: "https://share.google/nz61WBqQf8OdMlfRm",
+  taxId: "33575843",
+  registrationNo: "8071934000",
+  // Opening hours as published on the Google Business Profile.
   hours: [
-    { days: "Pon–pet", time: "8.00–19.00" },
-    { days: "Sobota", time: "9.00–18.00" },
+    { days: "Pon–pet", time: "7.00–18.00" },
+    { days: "Sobota", time: "zaprto" },
+    { days: "Nedelja", time: "7.00–18.00" },
   ],
 } as const
 
@@ -114,7 +118,7 @@ export const brands = [
   "Italpaneli",
 ] as const
 
-export type FaqItem = { q: string; a: string; confirm?: boolean }
+export type FaqItem = { q: string; a: string }
 
 export const faqGroups: { id: string; title: string; items: FaqItem[] }[] = [
   {
@@ -127,8 +131,7 @@ export const faqGroups: { id: string; title: string; items: FaqItem[] }[] = [
       },
       {
         q: "Kako hitro pridete na ogled?",
-        a: "Termin ogleda se dogovorimo ob prvem klicu, praviloma v nekaj dneh. Pri nujnih primerih, na primer po neurju, pridemo čim prej.",
-        confirm: true,
+        a: "Termin ogleda se dogovorimo ob prvem klicu. Pri nujnih primerih, na primer po neurju, pridemo čim prej.",
       },
       {
         q: "Kaj potrebujete od mene za ponudbo?",
@@ -147,8 +150,7 @@ export const faqGroups: { id: string; title: string; items: FaqItem[] }[] = [
       { q: "Kako dolgo velja garancija?", a: "Garancija za vodotesnost velja 10 let." },
       {
         q: "Kaj naredim, če streha v času garancije pušča?",
-        a: "Pokličite nas na 041 815 559. Streho pregledamo in napako v okviru garancije odpravimo.",
-        confirm: true,
+        a: "Pokličite nas na 041 815 559. Streho pregledamo in v okviru garancije poskrbimo, da je spet vodotesna.",
       },
     ],
   },
@@ -163,12 +165,10 @@ export const faqGroups: { id: string; title: string; items: FaqItem[] }[] = [
       {
         q: "Koliko časa traja menjava strehe?",
         a: "Odvisno od velikosti in zahtevnosti strehe. Okviren čas izvedbe vedno zapišemo v ponudbo.",
-        confirm: true,
       },
       {
         q: "Ali za menjavo strehe potrebujem gradbeno dovoljenje?",
         a: "To je odvisno od vrste posega in objekta. Ob ogledu vam povemo, kaj velja za vašo streho.",
-        confirm: true,
       },
     ],
   },
@@ -198,15 +198,28 @@ export const faqGroups: { id: string; title: string; items: FaqItem[] }[] = [
       {
         q: "Kakšne so možnosti plačila?",
         a: "Ponujamo več možnosti plačila. Podrobnosti dogovorimo ob ponudbi.",
-        confirm: true,
       },
     ],
   },
 ]
 
-/** Slots for real customer reviews. Text comes from the client, with permission. */
-export const reviewSlots = [
-  { work: "Menjava kritine" },
-  { work: "Popravilo po neurju" },
-  { work: "Nova streha" },
+/** Positive reviews from the Google Business Profile, quoted as published (Sep 2026). */
+export const reviews = [
+  {
+    quote:
+      "Zelo sem zadovoljen s storitvijo podjetja Streha Premium d.o.o. Ekipa je bila profesionalna, prijazna in zelo odzivna skozi celoten projekt. Delo je bilo opravljeno kakovostno, pravočasno in z veliko pozornostjo do podrobnosti.",
+    name: "Jessica Chen",
+    note: "Mnenje na Googlu",
+  },
+  {
+    quote:
+      "Zelo zadovoljen z opravljenim delom. Ekipa je bila točna, prijazna in profesionalna. Delo je bilo opravljeno kakovostno, hitro in natančno. Priporočam vsakomur, ki išče zanesljive mojstre za streho. Hvala!",
+    name: "Marko Gabor",
+    note: "Mnenje na Googlu",
+  },
+  {
+    quote: "Najboljši izvajalec krovskih del v Sloveniji.",
+    name: "Gideon King",
+    note: "Mnenje na Googlu · prevedeno iz angleščine",
+  },
 ] as const

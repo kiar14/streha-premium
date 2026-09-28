@@ -17,13 +17,11 @@ const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: faqGroups.flatMap((g) =>
-    g.items
-      .filter((item) => !item.confirm)
-      .map((item) => ({
-        "@type": "Question",
-        name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a },
-      })),
+    g.items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
   ),
 }
 
@@ -72,7 +70,7 @@ export default function FaqPage() {
             <div className="space-y-16 lg:col-span-8 lg:col-start-5">
               {faqGroups.map((g) => (
                 <section key={g.id} id={g.id} aria-labelledby={`${g.id}-title`} className="scroll-mt-28">
-                  <h2 id={`${g.id}-title`} className="annotation text-graphite/55">
+                  <h2 id={`${g.id}-title`} className="annotation text-graphite/65">
                     {g.title}
                   </h2>
                   <FaqAccordion items={g.items} />

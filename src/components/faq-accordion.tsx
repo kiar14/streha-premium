@@ -3,7 +3,6 @@
 import { Plus } from "lucide-react"
 import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
 import type { FaqItem } from "@/content/site"
-import { Potrdi } from "@/components/potrdi"
 
 export function FaqAccordion({ items }: { items: FaqItem[] }) {
   return (
@@ -22,7 +21,6 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
           <AccordionPrimitive.Panel className="h-(--accordion-panel-height) overflow-hidden transition-[height] duration-300 ease-out data-ending-style:h-0 data-starting-style:h-0">
             <div className="max-w-[44rem] pb-6 text-[1.05rem] leading-relaxed text-graphite/75">
               {item.a}
-              {item.confirm && <Potrdi className="ml-2">odgovor</Potrdi>}
             </div>
           </AccordionPrimitive.Panel>
         </AccordionPrimitive.Item>
