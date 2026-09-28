@@ -1,7 +1,7 @@
 # Asset plan: Streha Premium d.o.o.
 
 - **Step:** A2 · **v2**, 28 Sep 2026 · for `docs/demo-plan.md` v2
-- **Status:** ⏸ Waiting for your approval.
+- **Status:** ✅ Approved. The video and all 5 service pictures are delivered and in use (`public/hero/`, `public/storitve/`).
 
 **Rules**
 - AI pictures are hyper-realistic and look like **one photo shoot**: the same overcast light and the same Slovenian suburb as your 4 hero frames.
@@ -127,12 +127,12 @@ Everything goes into **`assets/raw/`** (lowercase, no spaces):
 - [x] `hero-02-folija-letve.webp`
 - [x] `hero-03-kritina-polovica.webp`
 - [x] `hero-04-koncana-streha.webp`
-- [ ] `hero-streha-nastaja.mp4` (Way A), **or** `hero-clip-1.mp4`, `hero-clip-2.mp4`, `hero-clip-3.mp4` (Way B)
-- [ ] `service-01-nove-strehe.jpg`
-- [ ] `service-02-obnova-popravila.jpg`
-- [ ] `service-03-kleparska-dela.jpg`
-- [ ] `service-04-ravne-strehe.jpg`
-- [ ] `service-05-zlebovi.jpg`
+- [x] `hero-streha-nastaja.mp4` (Way A), **or** `hero-clip-1.mp4`, `hero-clip-2.mp4`, `hero-clip-3.mp4` (Way B)
+- [x] `service-01-nove-strehe.jpg`
+- [x] `service-02-obnova-popravila.jpg`
+- [x] `service-03-kleparska-dela.jpg`
+- [x] `service-04-ravne-strehe.jpg`
+- [x] `service-05-zlebovi.jpg`
 - [ ] **From the client:**
   - `stefan-portrait.jpg`
   - `garancija-10-let.pdf`

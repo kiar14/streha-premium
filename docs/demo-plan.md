@@ -1,7 +1,10 @@
 # Demo plan – Streha Premium d.o.o.
 
 - **Step:** A2 · Demo plan · **v2**, 28 Sep 2026 (after your review)
-- **Status:** ⏸ **Waiting for your approval.** No code gets written until you approve this plan and `docs/asset-plan.md`.
+- **Status:** ✅ **Approved and built (A3)**, 28 Sep 2026. The open questions were not answered, so the recommended defaults are used:
+  - reviews are marked placeholders
+  - the header stays visible during the video
+  - a click, scroll or the "Preskoči" button skips to the end
 - **Built from:** `docs/research.md` and `PRODUCT.md`. The pictures are in `docs/asset-plan.md`.
 
 ## What changed since v1
