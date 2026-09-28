@@ -1,114 +1,142 @@
 # Asset plan: Streha Premium d.o.o.
 
-**Step:** A2 · 27 Sep 2026 · for `docs/demo-plan.md`
+- **Step:** A2 · **v2**, 28 Sep 2026 · for `docs/demo-plan.md` v2
+- **Status:** ⏸ Waiting for your approval.
 
 **Rules**
-- AI images must be **hyper-realistic** and must look like one photo shoot, so every prompt ends with the house style below.
-- AI images are used for service visuals, the signature sequence and backgrounds only. They are never labelled as the client's own projects.
-- The team, Stefan, and project photos must be **real client photos**.
-- No text or logos inside any generated image; those are added in code.
+- AI pictures are hyper-realistic and look like **one photo shoot**: the same overcast light and the same Slovenian suburb as your 4 hero frames.
+- They are never labelled as the client's own projects.
+- The team, Stefan, reviews and project photos must be **real**.
+- No text or logos inside generated images; those are added in code.
+
+---
+
+## How the "animated house" works (your question, researched)
+
+There are **three different techniques**. They are easy to mix up.
+
+| Technique | What it is | When to use it |
+|---|---|---|
+| **1. AI video from keyframes** (Grok Imagine, Higgsfield, Kling, Veo) | You give the tool still images. It **invents the motion in between** and outputs an MP4. Both Grok Imagine 1.5 and Higgsfield anchor **a start frame and an end frame** per generation, i.e. 2 images, not 4. | Always the first step when you want real-looking motion (a roof being built, an iPhone exploding). |
+| **2. Scroll-scrubbed frames** (the exploding-iPhone site from the workshop) | The MP4 from step 1 is cut by **ffmpeg** into about 100–150 separate still images (frames). The website draws *one frame at a time* on a canvas, based on how far you have scrolled, so scrolling "plays" the video forwards and backwards. Images are used instead of the video because browsers can't jump around inside an MP4 smoothly while scrolling. | Only when the animation is **driven by scroll**. |
+| **3. Remotion** | Makes videos **from code** (React): slides, crossfades, wipes, text and logo animations. It does **not** invent realistic motion between pictures. With your 4 frames it could only fade or wipe from one to the next. | Promo clips or social videos with text and graphics; a fallback if the AI video fails. |
+
+**What we use now:** the hero plays **on page load, not on scroll**, so we need **only technique 1**:
+1. You make **one MP4** from your frames.
+2. I use ffmpeg only to **compress** it (MP4 + WebM, a smaller phone version, and the first and last frames as still images).
+3. The site plays it as a normal video.
+
+There is **no frame cutting and no Remotion** for the hero.
+
+Sources:
+- [Grok Imagine Video 1.5 guide](https://help.scenario.com/articles/5410526625-grok-imagine-video-a-guide-to-ai-motion-creation) (first- and last-frame workflow)
+- [xAI API tutorial](https://news.creeta.com/en/grok-imagine-video-1-5-guide-2026/)
+- [Higgsfield keyframe animation (start and end frame)](https://www.michydev.com/higgsfield-cinema-studio-3-keyframe-animation-tutorial/)
+- [Higgsfield Start & End Frames](https://lab.pure-neo.io/ai-news/higgsfield-launches-start-end-frames-to-bring-narrative-control-to-ai-video)
+
+---
 
 ## House style
-Append this to the end of every image prompt:
+Append this to every image prompt. It is matched to your 4 frames.
 
-> Photorealistic editorial architecture photograph, shot on a full-frame camera with a 35mm lens at f/8, natural soft daylight under a bright overcast sky, true-to-life colours with a slightly cool tone. Central European (Slovenian) suburban setting: white and light-grey rendered facades, anthracite (#2B2E33) and natural clay-red roof tiles, galvanised and anthracite sheet metal. Crisp detail in materials (clay grain, metal folds, membrane print texture). Calm, honest, no drama: no lens flare, no HDR glow, no sunset, no heavy vignette. No people's faces visible, no text, no logos, no watermarks.
+> Photorealistic architectural photograph, full-frame camera, 35 mm lens, f/8, soft even daylight under a bright overcast grey sky, no harsh shadows. Slovenian suburb: white rendered walls with a light-grey plinth, anthracite window frames, neat green lawn and hedges, neighbouring houses with red and anthracite tile roofs, forested hills in the background. True-to-life colours, crisp material detail (tile texture, fresh spruce timber, sheet-metal folds). Calm and honest: no sunset, no lens flare, no HDR glow. No people, no text, no logos, no watermarks.
 
-**Palette reference (for judging results):**
-- anthracite `#23262B`
-- slate `#3A3F46`
-- zinc white `#F2F3F1`
-- clay red `#B4523A`
-- chalk red accent `#FF3131` (UI only, not in photos)
+---
 
-## Signature moments
+## Hero video – the 4 frames (✅ you made them, saved in `assets/raw/`)
 
-### ★ "Streha nastaja" (the roof builds itself), home § 3
-- **Where:** directly after the trust bar, pinned for about 4 screen heights of scroll.
-- **What the visitor sees:** one locked camera view of a new house's roof. As they scroll, layers appear in order, and each step shows a text beat on the left (desktop) or bottom (mobile):
-
-| Beat | Layer appears | Text beat (SL) |
+| Order | File name (use it when uploading to Grok / Higgsfield) | What it shows |
 |---|---|---|
-| 1 | Bare timber roof structure (rafters) | **01 Ostrešje** – Trdna osnova, preverjena pred začetkom del. |
-| 2 | Breathable membrane plus counter-battens | **02 Paroprepustna folija** – Druga linija obrambe pred vodo. |
-| 3 | Battens plus the first rows of tiles | **03 Letve in kritina** – Opečna, cementna ali pločevinasta – svetujemo, katera je prava. |
-| 4 | Full roof plus flashings, gutters and snow guards | **04 Kleparski zaključki** – Obrobe, žlebovi in snegobrani, izdelani po meri. |
-| 5 | Light rain; water runs off into the gutter; red stamp lands | **10 let garancije na vodotesnost.** Pisno, za vsako streho. |
+| 1 – start | `hero-01-ostresje.webp` | Bare spruce roof structure (rafters) |
+| 2 | `hero-02-folija-letve.webp` | Grey breathable membrane with vertical counter-battens |
+| 3 | `hero-03-kritina-polovica.webp` | Horizontal battens; lower half tiled in anthracite |
+| 4 – end | `hero-04-koncana-streha.webp` | Finished anthracite roof, ridge, gutter, snow guards |
 
-- **Fallback:** under `prefers-reduced-motion` and on low-power devices, the final frame is shown as a still with all 5 beats listed.
+All four are 1448 × 1086 (4:3), with the same camera, house and garden. That's exactly what the video needs.
 
-### Supporting: the red chalk line (no assets, built in SVG)
-- In the hero, a red line snaps along the ridge of the line-drawn roof on load.
-- It returns as a thin measuring line in "Kako delamo".
+⚠️ One small mismatch: in frame 3 the vertical counter-battens from frame 2 are no longer visible under the horizontal battens. The AI will usually hide this, but if a variant makes the battens "melt", pick another variant.
 
-## What to create
+### The video: `hero-streha-nastaja.mp4`
+- **Length:** 6 s
+- **Format:** 4:3 if the tool allows (otherwise 16:9 is fine; I'll handle the crop)
+- **Resolution:** highest available (1080p)
+- **Audio:** none
 
-### A. Keyframes (4 images) – 16:9, at least 2400×1350 px, PNG or high-quality JPG
-Make **KF1 first**, then create KF2–KF4 as **edits of KF1** (same image, same camera), so everything lines up. Tools: Midjourney v7 / Flux / GPT-image / Nano Banana, using "edit" or "vary region" with KF1 as the reference.
+**Way A – one generation (try this first)**
+- **Start frame:** `hero-01-ostresje.webp`
+- **End frame:** `hero-04-koncana-streha.webp`
+- If the tool accepts extra reference images, also add `hero-02-folija-letve.webp` and `hero-03-kritina-polovica.webp`.
 
-**KF1 – `roof-build-01-rafters.png`**
-> A newly built two-storey family house in a Slovenian suburb, white rendered walls finished, windows installed, the pitched gable roof (about 38°) showing only its bare new timber roof structure: pale spruce rafters, ridge beam and wall plate, evenly spaced, clean and precise. Camera at a three-quarter view from slightly above the eaves height, the whole roof and top of the facade in frame, roof occupying the right two-thirds of the image, plain bright overcast sky behind, calm empty lawn in front. No scaffolding in front of the roof, no workers. [house style]
+**Prompt:**
+> Time-lapse of a roof being built on this house, one smooth continuous shot. Camera completely locked, no camera movement. The house walls, windows, garden, neighbouring houses, hills, sky and soft overcast light stay exactly the same the whole time. Only the roof changes, in this order: first the bare spruce rafters; then a light-grey breathable roofing membrane rolls out over the rafters from the eaves up to the ridge, and vertical timber counter-battens are fixed along every rafter; then horizontal timber battens appear from the eaves to the ridge; then matte anthracite roof tiles are laid row by row from the eaves upward, until the whole roof is covered; finally ridge tiles close the top and a row of snow guards appears above the gutter. Steady, even pace, each stage takes about the same time. No people, no tools, no cranes, no birds, no rain, no text. No cuts, no flicker, no warping of the house. 6 seconds.
 
-**KF2 – `roof-build-02-membrane.png`**
-> Same image, same camera, same lighting, same house and background. Change only: the rafters are now covered with a light grey breathable roofing membrane (unbranded, faint printed grid pattern), neatly overlapped, with vertical pale timber counter-battens fixed on top along each rafter line. [house style]
+Make **3–4 variants and pick the smoothest one**: the house must not bend, flicker or change colour.
 
-**KF3 – `roof-build-03-battens-tiles.png`**
-> Same image, same camera, same lighting, same house and background. Change only: horizontal timber battens now run across the whole roof over the membrane, and the lower half of the roof is covered with matte anthracite (#2B2E33) interlocking concrete roof tiles laid in perfect rows, the upper half still showing battens and membrane. [house style]
+**Way B – only if Way A skips or mangles the middle stages**
+Make **3 short clips**, each with its own start and end frame, using the same prompt shortened to the one stage in brackets:
 
-**KF4 – `roof-build-04-finished.png`**
-> Same image, same camera, same lighting, same house and background. Change only: the whole roof is finished with matte anthracite interlocking tiles, a neat ridge line with ridge tiles, anthracite sheet-metal flashings at the verge and eaves, a half-round anthracite gutter with downpipe, and a row of snow guards above the eaves. [house style]
+| Clip | File name | Start → end | Stage (put in the prompt) |
+|---|---|---|---|
+| 1 | `hero-clip-1.mp4` | `hero-01-ostresje` → `hero-02-folija-letve` | "a light-grey breathable membrane rolls out over the rafters from the eaves to the ridge, then vertical counter-battens are fixed along every rafter" |
+| 2 | `hero-clip-2.mp4` | `hero-02-folija-letve` → `hero-03-kritina-polovica` | "horizontal battens appear from the eaves to the ridge, then anthracite tiles are laid row by row over the lower half" |
+| 3 | `hero-clip-3.mp4` | `hero-03-kritina-polovica` → `hero-04-koncana-streha` | "the remaining tiles are laid row by row up to the ridge, ridge tiles close the top, snow guards appear above the gutter" |
 
-**KF5 (optional) – `roof-build-05-rain.png`:** KF4 with light, steady rain, the tiles wet with a slight sheen, and water visibly running into the gutter. Sky slightly darker grey.
+I join them and time each to 2 s with ffmpeg, so the result is still one 6-second video.
 
-### B. Video clips (3–4) – 16:9, 1920×1080 or larger, 5–8 s each
-**Tool:** Kling 2.x / Veo 3 / Runway Gen-4 / Luma, using **start and end frames**. Make each clip from one pair: KF1→KF2, KF2→KF3, KF3→KF4, and optionally KF4→KF5.
+---
 
-**Prompt (use for every pair, changing only the bracket):**
-> Slow, smooth, continuous motion: [the grey membrane unrolls across the rafters from the eaves upward, then counter-battens appear one by one]. Camera completely locked, no movement. Constant speed, no cuts, no shake, background, house and lighting unchanged. No people. 6 seconds.
+## Service pictures (5) – 4:3, at least 1600 × 1200
+Generate them in Grok Imagine or Higgsfield (image mode). Paste the prompt, then the **house style** from above. Make 2–3 variants each and pick the most natural one.
 
-The bracket for each clip:
-- **Clip 2 – `roof-build-b-battens-tiles.mp4`:** "horizontal battens are laid across the roof from bottom to top, then anthracite tiles are laid row by row over the lower half"
-- **Clip 3 – `roof-build-c-finish.mp4`:** "the remaining tiles are laid row by row up to the ridge, ridge tiles close the top, then metal flashings, the gutter and snow guards appear"
-- **Clip 4 (optional) – `roof-build-d-rain.mp4`:** "light rain begins to fall, the tiles darken slightly as they get wet, water runs down the tiles into the gutter and out of the downpipe"
+**① `service-01-nove-strehe.jpg`: Nove strehe in prekrivanje**
+> A newly finished roof of natural clay-red interlocking roof tiles on a white rendered Slovenian family house, seen from slightly above at a three-quarter angle. The tile rows run in perfect straight lines diagonally through the frame, with a crisp ridge line at the top, anthracite sheet-metal verge flashing and a new anthracite gutter along the eaves. The roof fills most of the frame. [house style]
 
-Name clip 1 **`roof-build-a-membrane.mp4`**.
+**② `service-02-obnova-popravila.jpg`: Obnova in popravila**
+> An older white rendered Slovenian house during roof renovation. The left half of the roof still has old, weathered brown clay tiles; the right half is stripped to fresh spruce battens over a new light-grey breathable membrane, with a neat stack of new anthracite tiles resting on the battens. A clean steel scaffold with a guard rail runs along the eaves. Seen from slightly above at a three-quarter angle. [house style]
 
-Make **2–4 variants of each clip and pick the smoothest**, not the prettiest. There must be no warping of the house and no flicker.
+**③ `service-03-kleparska-dela.jpg`: Kleparska dela**
+> Close-up detail of precise sheet-metal work on a roof: an anthracite standing-seam metal roof meeting a custom-folded chimney flashing and a verge flashing, with sharp clean folds, straight seams and neat fixing clips. A white rendered chimney rises out of the roof. Overcast light shows the matte metal texture. [house style]
 
-**Optional for mobile:** the same set in 9:16 (1080×1920), with the roof filling the upper 60 %.
+**④ `service-04-ravne-strehe.jpg`: Ravne strehe in hidroizolacije**
+> A modern flat roof on a white cubic Slovenian family house, seen from a slightly higher neighbouring viewpoint. Fresh light-grey PVC waterproofing membrane covers the roof, with welded seams visible as thin straight lines, a clean anthracite metal parapet edge flashing and a round roof drain. The surface is dry and even. Neighbouring pitched roofs and forested hills in the background. [house style]
 
-## Pictures
+**⑤ `service-05-zlebovi.jpg`: Žlebovi in odvodnjavanje**
+> Low-angle view looking up at the eaves corner of a white rendered house: a new anthracite half-round gutter on neat brackets, a corner outlet and an anthracite downpipe running down the facade. Above it the edge of an anthracite tile roof with a row of snow guards. Clean white soffit, soft overcast light. [house style]
 
-| ID | Page › section | Ratio · size | AI / real | Prompt / source |
+---
+
+## All pictures
+
+| ID | Page › section | Ratio · size | AI / real | Source |
 |---|---|---|---|---|
-| P01 | Home › Hero | – | **Code** (SVG linework of the logo roof) | No image. Optional texture: see P11. |
-| P02 | Home › Storitve ① Nove strehe in prekrivanje | 4:3 · 1600×1200 | AI | *Close view along a freshly finished roof of natural clay-red interlocking roof tiles on a new Slovenian house, perfect straight rows running diagonally through the frame, crisp ridge line at the top, a white rendered gable wall at the edge of frame, soft overcast daylight.* [house style] |
-| P03 | Home › Storitve ② Obnova in popravila | 4:3 · 1600×1200 | AI | *An older Slovenian house mid-renovation: half of the roof stripped to new timber battens over a fresh grey breathable membrane, the other half still showing old weathered brown tiles, a neat stack of new anthracite tiles on the battens, secure scaffolding with guard rail along the eaves, no people.* [house style] |
-| P04 | Home › Storitve ③ Kleparska dela | 4:3 · 1600×1200 | AI | *Macro-detail of precise anthracite standing-seam sheet-metal roofing meeting a custom-folded verge flashing and a chimney flashing, sharp clean folds and seams, rivets and clips visible, overcast light revealing the metal's matte texture.* [house style] |
-| P05 | Home › Storitve ④ Ravne strehe in hidroizolacije | 4:3 · 1600×1200 | AI | *A modern flat roof of a Slovenian single-family house with a fresh light-grey PVC waterproofing membrane, welded seams visible as neat lines, a clean metal roof edge (attic) flashing and a roof drain, slight puddle-free surface, white parapet, bright overcast sky reflected softly.* [house style] |
-| P06 | Home › Storitve ⑤ Žlebovi in odvodnjavanje | 4:3 · 1600×1200 | AI | *Low-angle view up at the eaves of a white rendered house: a new anthracite half-round gutter with neat brackets, a corner outlet and a downpipe running down the facade, anthracite roof tiles and snow guards visible above, clean soffit, soft overcast light.* [house style] |
-| P07 | Home › Projekti | various | **REAL** | `assets/client/photos/real-01…05` (already collected) |
-| P08 | Home › O nas (crew) | 3:4 | **REAL** | `assets/client/photos/real-03-ekipa-letve-folija.jpg` (have) |
-| P09 | Home › O nas (Stefan) | 4:5 · min 1200×1500 | **REAL, MISSING** | Portrait of Stefan Gabor on a roof or next to the van, daylight, looking at camera. A phone photo is fine. |
-| P10 | Home › Garancija | 1414×2000 | **REAL** | `assets/client/documents/garancija-10-let-vodotesnost.jpg` (have). The PDF version is **MISSING**. |
-| P11 | Home › Hero and dark sections (texture, optional) | 16:9 · 2400×1350 | AI | *Straight-on, perfectly flat top-down photograph of matte anthracite concrete roof tiles filling the entire frame, even overcast light, subtle surface grain, no perspective, no horizon, seamless-looking pattern.* [house style] |
-| P12 | Share image (OG) | 1200×630 | **Code-composed** | The logo roof linework, H1 and stamp rendered from the hero. No AI. |
-| P13 | Home › Materiali | – | Logos | Tondach, Creaton, Bramac, Sika (have, in `assets/client/partners/`). Redraw as monochrome SVG. **MISSING:** clean logos for Eternit, Esal, Gerard, Metro Bond, Trimo, Isopan, Italpaneli, plus confirmation that they may be shown. |
+| V01 | Home › Hero video | 4:3 · 1080p · 6 s | AI video | `hero-streha-nastaja.mp4` (from the 4 frames) |
+| P01 | Home › Hero poster and still | 4:3 | AI (have) | `hero-01…` (poster) and `hero-04…` (still for reduced motion) |
+| P02–P06 | Home › Storitve (5 cards) | 4:3 · 1600×1200 | AI | prompts ①–⑤ above |
+| P07 | Home › Projekti | various | **REAL** (have) | `assets/client/photos/real-01…05` |
+| P08 | Home › O nas (crew) | 2:3 | **REAL** (have) | `assets/client/photos/real-03-ekipa-letve-folija.jpg` |
+| P09 | Home › O nas (Stefan) | 4:5 · min 1200×1500 | **REAL, MISSING** | Portrait of Stefan Gabor on a roof or next to the van, daylight, looking at the camera. A phone photo is fine. |
+| P10 | Home › Garancija | 1414×2000 | **REAL** (have) | `assets/client/documents/garancija-10-let-vodotesnost.jpg`. The PDF is **MISSING**. |
+| P11 | Home › Mnenja strank | – | **REAL, MISSING** | 3 real customer quotes (first name, town, type of work), with permission. No photos needed. |
+| P12 | Home › Materiali | – | Text | Brand names typeset in code (no logo files needed) |
+| P13 | Share image (OG) | 1200×630 | Composed in code | `hero-04` + H1 + stamp |
+| – | Pogosta vprašanja page | – | – | No pictures |
 
 ## Checklist for you
-Put everything into **`assets/raw/`** (no spaces in names, lowercase):
-
-- [ ] `roof-build-01-rafters.png` (KF1)
-- [ ] `roof-build-02-membrane.png` (KF2, edit of KF1)
-- [ ] `roof-build-03-battens-tiles.png` (KF3, edit of KF1)
-- [ ] `roof-build-04-finished.png` (KF4, edit of KF1)
-- [ ] `roof-build-05-rain.png` (optional)
-- [ ] `roof-build-a-membrane.mp4`, `roof-build-b-battens-tiles.mp4`, `roof-build-c-finish.mp4` (+ optional `roof-build-d-rain.mp4`)
-- [ ] `service-01-nove-strehe.jpg` (P02)
-- [ ] `service-02-obnova.jpg` (P03)
-- [ ] `service-03-kleparstvo.jpg` (P04)
-- [ ] `service-04-ravne-strehe.jpg` (P05)
-- [ ] `service-05-zlebovi.jpg` (P06)
-- [ ] `texture-anthracite-tiles.jpg` (P11, optional)
-- [ ] **From the client:** `stefan-portrait.jpg`, `garancija-10-let.pdf`, original logo file (Canva/SVG), more real project photos (ideally before/after pairs taken from the same spot), confirmation of the 5 unverified photos
-
-Until the files exist, the demo uses marked placeholders in the same slots. Dropping the files in with these names is all that's needed.
+Everything goes into **`assets/raw/`** (lowercase, no spaces):
+- [x] `hero-01-ostresje.webp`
+- [x] `hero-02-folija-letve.webp`
+- [x] `hero-03-kritina-polovica.webp`
+- [x] `hero-04-koncana-streha.webp`
+- [ ] `hero-streha-nastaja.mp4` (Way A), **or** `hero-clip-1.mp4`, `hero-clip-2.mp4`, `hero-clip-3.mp4` (Way B)
+- [ ] `service-01-nove-strehe.jpg`
+- [ ] `service-02-obnova-popravila.jpg`
+- [ ] `service-03-kleparska-dela.jpg`
+- [ ] `service-04-ravne-strehe.jpg`
+- [ ] `service-05-zlebovi.jpg`
+- [ ] **From the client:**
+  - `stefan-portrait.jpg`
+  - `garancija-10-let.pdf`
+  - 3 real reviews (text)
+  - the original logo file
+  - opening hours
+  - answers to the ❓ FAQ questions
