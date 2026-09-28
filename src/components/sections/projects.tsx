@@ -10,7 +10,7 @@ const layout = [
 
 export function Projects() {
   return (
-    <section id="projekti" aria-labelledby="projekti-title" className="bg-zinc py-24 text-graphite md:py-32">
+    <section id="projekti" aria-labelledby="projekti-title" className="bg-white py-24 text-graphite md:py-32">
       <div className="mx-auto max-w-[88rem] px-5 md:px-8">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <h2 id="projekti-title" className="font-display text-[clamp(2.5rem,5.6vw,4.75rem)] lg:col-span-7">
@@ -35,7 +35,7 @@ export function Projects() {
                     className="object-cover transition-transform duration-[1.4s] ease-out hover:scale-[1.03]"
                   />
                 </div>
-                <figcaption className="mt-3 text-[0.95rem] font-medium text-graphite/85">{p.title}</figcaption>
+                <figcaption className="mt-3 text-[1.05rem] font-medium text-graphite/85">{p.title}</figcaption>
               </figure>
             </li>
           ))}

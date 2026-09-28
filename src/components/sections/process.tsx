@@ -51,7 +51,7 @@ export function Process() {
               </span>
               <div data-step-copy>
                 <h3 className="mt-7 text-[1.35rem] font-semibold tracking-[-0.02em]">{step.title}</h3>
-                <p className="mx-auto mt-3 max-w-[19rem] text-[1.02rem] leading-relaxed text-graphite/70">{step.text}</p>
+                <p className="mx-auto mt-3 max-w-[19rem] text-[1.1rem] leading-relaxed text-graphite/70">{step.text}</p>
               </div>
             </li>
           ))}

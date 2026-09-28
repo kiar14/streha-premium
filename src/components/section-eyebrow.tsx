@@ -5,7 +5,7 @@ export function SectionEyebrow({ children, className }: { children: React.ReactN
   return (
     <p className={cn("flex items-center justify-center gap-3 text-graphite/65", className)}>
       <span aria-hidden className="h-px w-8 bg-chalk-deep" />
-      <span className="text-[0.72rem] font-medium tracking-[0.22em] uppercase">{children}</span>
+      <span className="text-[0.9375rem] font-medium tracking-[0.2em] uppercase">{children}</span>
       <span aria-hidden className="h-px w-8 bg-chalk-deep" />
     </p>
   )

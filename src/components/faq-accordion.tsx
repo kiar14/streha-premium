@@ -19,7 +19,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
             </AccordionPrimitive.Trigger>
           </AccordionPrimitive.Header>
           <AccordionPrimitive.Panel className="h-(--accordion-panel-height) overflow-hidden transition-[height] duration-300 ease-out data-ending-style:h-0 data-starting-style:h-0">
-            <div className="max-w-[44rem] pb-6 text-[1.05rem] leading-relaxed text-graphite/75">
+            <div className="max-w-[44rem] pb-6 text-[1.15rem] leading-relaxed text-graphite/75">
               {item.a}
             </div>
           </AccordionPrimitive.Panel>

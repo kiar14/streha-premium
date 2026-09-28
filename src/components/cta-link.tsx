@@ -17,8 +17,8 @@ export function CtaLink({
       href={href}
       className={cn(
         "group inline-flex items-center justify-center gap-3 bg-chalk-deep font-semibold text-white transition-colors duration-300 hover:bg-[#c01616] active:translate-y-px",
-        size === "sm" && "h-10 px-4 text-sm",
-        size === "md" && "h-12 px-5 text-[0.95rem]",
+        size === "sm" && "h-10 px-4 text-base",
+        size === "md" && "h-12 px-5 text-[1.05rem]",
         size === "lg" && "h-14 px-6 text-base",
         className,
       )}

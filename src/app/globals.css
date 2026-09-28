@@ -126,9 +126,9 @@
 @utility annotation {
   font-family: var(--font-archivo);
   font-variation-settings: "wdth" 88;
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   font-variant-numeric: tabular-nums;
 }

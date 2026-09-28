@@ -69,7 +69,7 @@ export function Enquiry() {
               <br />
               <span className="text-chalk">Brezplačno.</span>
             </h2>
-            <p className="mt-6 max-w-[26rem] text-[1.05rem] leading-relaxed text-zinc/75">
+            <p className="mt-6 max-w-[26rem] text-[1.15rem] leading-relaxed text-zinc/75">
               Nova streha, obnova ali popravilo po neurju? Povejte nam, kaj potrebujete. Pokličemo vas in se
               dogovorimo za ogled.
             </p>
@@ -83,7 +83,7 @@ export function Enquiry() {
                 <Phone aria-hidden className="size-6 text-chalk" strokeWidth={1.75} />
                 {company.phone}
               </a>
-              <div className="mt-5 flex flex-col gap-3 text-[0.95rem] text-zinc/75">
+              <div className="mt-5 flex flex-col gap-3 text-[1.05rem] text-zinc/75">
                 <a href={`mailto:${company.email}`} className="inline-flex items-center gap-2.5 transition-colors hover:text-zinc">
                   <Mail aria-hidden className="size-4" /> {company.email}
                   <ArrowUpRight aria-hidden className="size-3.5 opacity-60" />
@@ -120,11 +120,11 @@ export function Enquiry() {
                     reset(defaults)
                     setSent(null)
                   }}
-                  className="mt-8 self-start text-[0.95rem] font-semibold underline decoration-graphite/30 underline-offset-4 hover:decoration-chalk"
+                  className="mt-8 self-start text-[1.05rem] font-semibold underline decoration-graphite/30 underline-offset-4 hover:decoration-chalk"
                 >
                   Pošlji novo povpraševanje
                 </button>
-                <p className="mt-10 text-xs text-graphite/65">Demo obrazec, podatki se ne pošiljajo ali shranjujejo.</p>
+                <p className="mt-10 text-base text-graphite/65">Demo obrazec, podatki se ne pošiljajo ali shranjujejo.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-x-6 gap-y-6 sm:grid-cols-2">
@@ -174,12 +174,12 @@ export function Enquiry() {
                       </>
                     )}
                   </button>
-                  <p className="max-w-[15rem] text-xs leading-relaxed text-graphite/65 sm:text-right">
+                  <p className="max-w-[15rem] text-base leading-relaxed text-graphite/65 sm:text-right">
                     Demo obrazec. Podatki se ne pošiljajo ali shranjujejo.
                   </p>
                 </div>
                 {serverError && (
-                  <p role="alert" className="text-sm font-medium text-chalk-deep sm:col-span-2">
+                  <p role="alert" className="text-base font-medium text-chalk-deep sm:col-span-2">
                     Pošiljanje ni uspelo. Poskusite znova ali nas pokličite na {company.phone}.
                   </p>
                 )}
@@ -219,9 +219,9 @@ function Field({
   const errorId = `${id}-error`
   return (
     <div className={cn("flex flex-col", className)}>
-      <label htmlFor={id} className="mb-2 text-[0.95rem] font-medium text-graphite">
+      <label htmlFor={id} className="mb-2 text-[1.05rem] font-medium text-graphite">
         {label}
-        {optional && <span className="ml-1.5 text-sm font-normal text-graphite/65">(neobvezno)</span>}
+        {optional && <span className="ml-1.5 text-base font-normal text-graphite/65">(neobvezno)</span>}
       </label>
       {children({
         id,
@@ -230,7 +230,7 @@ function Field({
         "aria-describedby": error ? errorId : undefined,
       })}
       {error && (
-        <p id={errorId} className="mt-2 text-sm text-chalk-deep">
+        <p id={errorId} className="mt-2 text-base text-chalk-deep">
           {error}
         </p>
       )}

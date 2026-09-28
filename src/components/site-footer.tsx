@@ -80,11 +80,11 @@ export function SiteFooter() {
               <dd className="text-zinc">{company.registrationNo}</dd>
             </div>
           </dl>
-          <p className="mt-1 text-sm text-zinc/50">Nismo zavezanci za DDV.</p>
+          <p className="mt-1 text-base text-zinc/50">Nismo zavezanci za DDV.</p>
         </div>
       </div>
 
-      <div className="mx-auto mt-14 flex max-w-[88rem] flex-col gap-3 border-t border-zinc/10 px-5 pt-6 text-sm text-zinc/50 sm:flex-row sm:justify-between md:px-8">
+      <div className="mx-auto mt-14 flex max-w-[88rem] flex-col gap-3 border-t border-zinc/10 px-5 pt-6 text-base text-zinc/50 sm:flex-row sm:justify-between md:px-8">
         <p>© 2026 {company.name} Vse pravice pridržane.</p>
         <a href="https://strehapremium.si/politika-zasebnosti/" className="hover:text-zinc">
           Politika zasebnosti

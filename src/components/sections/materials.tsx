@@ -21,7 +21,7 @@ export function Materials() {
         >
           Podjetja, s katerimi sodelujemo
         </h2>
-        <p className="mx-auto mt-4 max-w-[36rem] text-[1.05rem] leading-relaxed text-zinc/70">
+        <p className="mx-auto mt-5 max-w-[42rem] text-[1.25rem] leading-relaxed text-zinc/75">
           Delamo s preverjenimi materiali in ob ogledu svetujemo, katera kritina je prava za naklon in konstrukcijo
           vaše strehe.
         </p>

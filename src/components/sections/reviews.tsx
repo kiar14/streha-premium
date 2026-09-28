@@ -26,7 +26,7 @@ export function Reviews() {
   }, [paused, reduced, go])
 
   return (
-    <section aria-labelledby="mnenja-title" className="bg-zinc-2 py-24 text-graphite md:py-32">
+    <section aria-labelledby="mnenja-title" className="bg-zinc py-24 text-graphite md:py-32">
       <div className="mx-auto max-w-[80rem] px-5 md:px-8">
         <SectionEyebrow>Mnenja strank</SectionEyebrow>
         <h2
@@ -75,7 +75,7 @@ export function Reviews() {
                       <span aria-hidden className="h-px w-6 bg-graphite/25" />
                       <span className="font-medium text-graphite/85">{r.name}</span>
                     </span>
-                    <span className="text-sm text-graphite/65">{r.note}</span>
+                    <span className="text-base text-graphite/65">{r.note}</span>
                   </figcaption>
                 </figure>
               )
@@ -111,7 +111,7 @@ export function Reviews() {
             href={company.googleProfile}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 rounded-[10px] border border-graphite/15 bg-white px-5 py-3 text-[0.95rem] font-medium text-graphite shadow-[0_1px_2px_rgb(21_23_26/0.05)] transition-colors hover:border-graphite/35"
+            className="inline-flex items-center gap-2.5 rounded-[10px] border border-graphite/15 bg-white px-5 py-3 text-[1.05rem] font-medium text-graphite shadow-[0_1px_2px_rgb(21_23_26/0.05)] transition-colors hover:border-graphite/35"
           >
             <Star aria-hidden className="size-4 fill-chalk-deep text-chalk-deep" strokeWidth={0} />
             Mnenja na Googlu

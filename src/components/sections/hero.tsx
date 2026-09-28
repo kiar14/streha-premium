@@ -6,20 +6,21 @@ import { preload } from "react-dom"
 import gsap from "gsap"
 import { SplitText } from "gsap/SplitText"
 import { useGSAP } from "@gsap/react"
-import { Award, ChevronsRight, ClipboardCheck, House, ShieldCheck } from "lucide-react"
+import { Award, ChevronsRight, ClipboardCheck, House } from "lucide-react"
 import { company } from "@/content/site"
 import { CtaLink } from "@/components/cta-link"
 import { WarrantyStamp } from "@/components/warranty-stamp"
+import { cn } from "@/lib/utils"
 
 gsap.registerPlugin(useGSAP, SplitText)
 
 const SEEN_KEY = "sp-hero-seen"
 const trust = [
-  { label: "10 let pisne garancije na vodotesnost", icon: ShieldCheck },
-  { label: "Več kot 20 let izkušenj", icon: Award },
-  { label: "Brezplačen ogled in ponudba", icon: ClipboardCheck },
-  { label: "150 zaključenih projektov", icon: House },
-]
+  { figure: "10 let", title: "Pisna garancija na vodotesnost" },
+  { icon: Award, title: "20+ let izkušenj", text: "Družinsko podjetje" },
+  { icon: ClipboardCheck, title: "Brezplačen ogled", text: "In pregledna pisna ponudba" },
+  { icon: House, title: "150 projektov", text: "Po Sloveniji in v Avstriji" },
+] as const
 // Intrinsic sizes: the video is the centre band of the still, at the same horizontal scale.
 const VIDEO = { w: 1280, h: 708 }
 const STILL = { w: 1448, h: 1086 }
@@ -186,22 +187,22 @@ export function Hero() {
         <button
           type="button"
           data-hero-intro-ui
-          className="absolute right-3 bottom-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-ink/70 px-3.5 py-2 text-sm font-medium text-zinc backdrop-blur-sm transition-colors hover:bg-ink/90 lg:right-8 lg:bottom-8"
+          className="absolute right-3 bottom-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-ink/70 px-3.5 py-2 text-base font-medium text-zinc backdrop-blur-sm transition-colors hover:bg-ink/90 lg:right-8 lg:bottom-8"
         >
           Preskoči <ChevronsRight aria-hidden className="size-4" />
         </button>
       </div>
 
-      <div className="relative mx-auto flex max-w-[88rem] flex-col px-5 pt-8 md:px-8 lg:pointer-events-none lg:h-full lg:pt-[clamp(8.5rem,21vh,12rem)]">
+      <div className="relative mx-auto flex max-w-[88rem] flex-col px-5 pt-8 pb-10 md:px-8 lg:pointer-events-none lg:h-full lg:pt-[clamp(8.5rem,21vh,12rem)] lg:pb-0">
         <div data-hero-reveal className="pointer-events-auto max-w-[58rem]">
           <h1
             id="hero-title"
             data-hero-title
             className="font-display text-[clamp(3rem,7.6vw,6rem)] text-zinc"
           >
-            Streha, ki ostane suha.
+            Streha brez skrbi.
             <br />
-            <span className="text-chalk">Pisno, 10&nbsp;let.</span>
+            <span className="text-chalk">10&nbsp;let garancije.</span>
           </h1>
           <p data-hero-line className="mt-6 max-w-[36rem] text-lg leading-relaxed text-zinc/90 md:text-xl">
             Krovska, kleparska in hidroizolacijska dela po vsej Sloveniji in v Avstriji. Brezplačen ogled in
@@ -217,23 +218,42 @@ export function Hero() {
             </a>
           </div>
         </div>
+      </div>
 
-        {/* trust bar: part of the hero */}
+      {/* trust bar: a solid band across the bottom of the hero */}
+      <div
+        data-hero-trust
+        className="relative border-t border-zinc/10 bg-[#26292e] lg:absolute lg:inset-x-0 lg:bottom-0 lg:bg-[#26292e]/95"
+      >
         <ul
-          data-hero-trust
           aria-label="Zakaj Streha Premium"
-          className="pointer-events-auto mt-12 mb-10 grid grid-cols-2 gap-3 lg:mt-auto lg:mb-0 lg:grid-cols-4 lg:gap-0 lg:border-t lg:border-zinc/15"
+          className="mx-auto grid max-w-[80rem] grid-cols-2 lg:grid-cols-4"
         >
-          {trust.map(({ label, icon: Icon }) => (
+          {trust.map((item, i) => (
             <li
-              key={label}
+              key={item.title}
               data-hero-trust-item
-              className="flex flex-col gap-3 rounded-[12px] border border-zinc/12 bg-slate p-4 sm:flex-row sm:items-center sm:gap-4 lg:rounded-none lg:border-0 lg:border-l lg:border-zinc/15 lg:bg-transparent lg:px-7 lg:py-7 lg:first:border-l-0 lg:first:pl-0"
+              className={cn(
+                "flex flex-col items-center justify-center px-4 py-7 text-center lg:my-5 lg:py-3",
+                i % 2 === 1 && "border-l border-zinc/12",
+                i > 1 && "border-t border-zinc/12 lg:border-t-0",
+                i === 2 && "lg:border-l",
+              )}
             >
-              <span className="grid size-11 shrink-0 place-items-center rounded-[10px] bg-chalk-deep text-white shadow-[0_6px_16px_-6px_rgb(214_31_31/0.6)] lg:size-12">
-                <Icon aria-hidden className="size-5 lg:size-6" strokeWidth={2} />
-              </span>
-              <span className="text-[1.02rem] leading-snug font-semibold text-zinc lg:text-[1.125rem]">{label}</span>
+              {"figure" in item ? (
+                <>
+                  <span className="font-display text-[clamp(2.4rem,3.4vw,3rem)] text-chalk">{item.figure}</span>
+                  <span className="mt-2 max-w-[14rem] text-[1.15rem] leading-snug text-zinc/80">{item.title}</span>
+                </>
+              ) : (
+                <>
+                  <item.icon aria-hidden className="size-8 text-chalk" strokeWidth={1.5} />
+                  <span className="mt-3 text-[1.2rem] leading-tight font-semibold text-zinc lg:text-[1.3rem]">
+                    {item.title}
+                  </span>
+                  <span className="mt-1.5 text-[1.1rem] leading-snug text-zinc/75">{item.text}</span>
+                </>
+              )}
             </li>
           ))}
         </ul>

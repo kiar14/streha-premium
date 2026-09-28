@@ -11,7 +11,7 @@ export function CtaBand({ formHref = "/#povprasevanje" }: { formHref?: string })
           <h2 id="cta-title" className="font-display text-[clamp(2.25rem,4.6vw,3.75rem)] text-zinc">
             Ogled in ponudba sta <span className="text-chalk">brezplačna.</span>
           </h2>
-          <p className="mt-4 max-w-[36rem] text-[1.05rem] leading-relaxed text-zinc/75">
+          <p className="mt-4 max-w-[36rem] text-[1.15rem] leading-relaxed text-zinc/75">
             Povejte nam, kaj potrebuje vaša streha. Na klice in sporočila odgovorimo hitro, nato se dogovorimo
             za termin ogleda.
           </p>

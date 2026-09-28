@@ -19,7 +19,7 @@ export function Services() {
           </p>
         </div>
 
-        <ul className="mt-14 grid gap-5 md:grid-cols-2 lg:mt-20 lg:grid-cols-6">
+        <ul className="mt-12 grid gap-5 md:grid-cols-2 lg:mt-14 lg:grid-cols-6">
           {services.map((s, i) => (
             <li
               key={s.id}
@@ -31,7 +31,7 @@ export function Services() {
               {/* tag hole */}
               <span aria-hidden className="absolute top-4 right-4 z-10 size-3 rounded-full border border-graphite/25 bg-zinc" />
 
-              <div className={cn("relative overflow-hidden", i < 2 ? "aspect-[16/10]" : "aspect-[4/3]")}>
+              <div className={cn("relative overflow-hidden", i < 2 ? "aspect-[2/1]" : "aspect-[16/10]")}>
                 <Image
                   src={s.image}
                   alt={s.imageAlt}
@@ -45,11 +45,11 @@ export function Services() {
                 />
               </div>
 
-              <div className="flex flex-1 flex-col p-6 md:p-7">
-                <h3 className="text-2xl font-semibold tracking-tight">{s.title}</h3>
-                <p className="mt-3 text-[1rem] leading-relaxed text-graphite/75">{s.text}</p>
-                <p className="annotation mt-5 text-graphite/65">{s.spec}</p>
-                <div className="mt-auto pt-7">
+              <div className="flex flex-1 flex-col px-6 pt-5 pb-6">
+                <h3 className="text-[1.4rem] leading-tight font-semibold tracking-tight">{s.title}</h3>
+                <p className="mt-2 text-[1.15rem] leading-relaxed text-graphite/75">{s.text}</p>
+                <p className="annotation mt-3 text-graphite/65">{s.spec}</p>
+                <div className="mt-auto pt-4">
                   <ServiceEnquiryLink service={s.id} label={s.title} />
                 </div>
               </div>
