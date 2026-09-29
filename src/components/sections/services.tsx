@@ -5,15 +5,15 @@ import { cn } from "@/lib/utils"
 
 export function Services() {
   return (
-    <section id="storitve" aria-labelledby="storitve-title" className="bg-zinc py-24 text-graphite md:py-32">
+    <section id="storitve" aria-labelledby="storitve-title" className="bg-white py-24 text-graphite md:py-32">
       <div className="mx-auto max-w-[88rem] px-5 md:px-8">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h2 id="storitve-title" className="font-display text-[clamp(2.5rem,5.6vw,4.75rem)] lg:col-span-7">
+        <div className="flex flex-col items-center gap-6 text-center">
+          <h2 id="storitve-title" className="font-display text-[clamp(2.5rem,5.6vw,4.75rem)]">
             Vse za streho.
             <br />
             Ena ekipa.
           </h2>
-          <p className="max-w-[32rem] text-lg leading-relaxed text-graphite/75 lg:col-span-5 lg:justify-self-end">
+          <p className="max-w-[36rem] text-lg leading-relaxed text-graphite/75">
             Od ostrešja do zadnjega žleba. Za vsa dela odgovarja ena ekipa, ki na koncu podpiše tudi garancijo na
             vodotesnost.
           </p>
@@ -29,7 +29,7 @@ export function Services() {
               )}
             >
               {/* tag hole */}
-              <span aria-hidden className="absolute top-4 right-4 z-10 size-3 rounded-full border border-graphite/25 bg-zinc" />
+              <span aria-hidden className="absolute top-4 right-4 z-10 size-3 rounded-full border border-graphite/25 bg-white" />
 
               <div className={cn("relative overflow-hidden", i < 2 ? "aspect-[2/1]" : "aspect-[16/10]")}>
                 <Image

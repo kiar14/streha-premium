@@ -78,7 +78,7 @@ export function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-x-0 top-0 -z-10 h-dvh overflow-y-auto bg-ink px-5 pt-[calc(var(--header-h)+1.5rem)] pb-28 xl:hidden"
+            className="absolute inset-x-0 top-0 -z-10 h-dvh overflow-y-auto bg-ink px-5 pt-[calc(var(--header-h)+1.5rem)] pb-10 xl:hidden"
           >
             <ul className="divide-y divide-zinc/10">
               {nav.map((item) => (

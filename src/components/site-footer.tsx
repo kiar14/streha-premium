@@ -4,7 +4,7 @@ import { FacebookIcon } from "@/components/icons"
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-zinc/10 bg-[#121416] pt-16 pb-28 text-zinc/75 lg:pb-12">
+    <footer className="border-t border-zinc/10 bg-[#121416] pt-16 pb-12 text-zinc/75">
       <div className="mx-auto grid max-w-[88rem] gap-12 px-5 md:px-8 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Image src="/brand/logo-light.png" alt="Streha Premium" width={640} height={411} className="h-16 w-auto" />

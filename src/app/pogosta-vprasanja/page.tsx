@@ -3,7 +3,6 @@ import { faqGroups } from "@/content/site"
 import { baseOpenGraph } from "@/lib/metadata"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
-import { MobileActionBar } from "@/components/mobile-action-bar"
 import { CtaBand } from "@/components/sections/cta-band"
 import { FaqAccordion } from "@/components/faq-accordion"
 
@@ -52,7 +51,7 @@ export default function FaqPage() {
           </div>
         </section>
 
-        <section className="bg-zinc py-16 text-graphite md:py-24">
+        <section className="bg-white py-16 text-graphite md:py-24">
           <div className="mx-auto grid max-w-[88rem] gap-12 px-5 md:px-8 lg:grid-cols-12">
             <nav aria-label="Teme" className="lg:col-span-3">
               <ul className="flex flex-wrap gap-2 lg:sticky lg:top-28 lg:flex-col lg:gap-0 lg:border-l lg:border-graphite/15">
@@ -85,7 +84,6 @@ export default function FaqPage() {
         <CtaBand />
       </main>
       <SiteFooter />
-      <MobileActionBar />
     </>
   )
 }

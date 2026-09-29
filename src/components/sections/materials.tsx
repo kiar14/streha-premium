@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { SectionEyebrow } from "@/components/section-eyebrow"
 
-// Logos as shown on the current strehapremium.si, in their real colours.
+// Logos as shown on the current strehapremium.si, in their real colours, white backgrounds cut out.
 const partners = [
   { name: "Tondach", src: "/partnerji/tondach.webp", w: 347 },
   { name: "Creaton", src: "/partnerji/creaton.webp", w: 708 },
@@ -12,16 +12,16 @@ const partners = [
 
 export function Materials() {
   return (
-    <section aria-labelledby="materiali-title" className="overflow-hidden bg-ink py-20 md:py-24">
+    <section aria-labelledby="materiali-title" className="overflow-hidden bg-zinc-2 py-20 text-graphite md:py-24">
       <div className="mx-auto max-w-[80rem] px-5 text-center md:px-8">
-        <SectionEyebrow className="text-zinc/60">Materiali</SectionEyebrow>
+        <SectionEyebrow>Materiali</SectionEyebrow>
         <h2
           id="materiali-title"
-          className="mt-5 text-[clamp(2rem,4vw,3.1rem)] leading-[1.05] font-semibold tracking-[-0.035em] text-zinc"
+          className="mt-5 text-[clamp(2rem,4vw,3.1rem)] leading-[1.05] font-semibold tracking-[-0.035em]"
         >
           Podjetja, s katerimi sodelujemo
         </h2>
-        <p className="mx-auto mt-5 max-w-[42rem] text-[1.25rem] leading-relaxed text-zinc/75">
+        <p className="mx-auto mt-5 max-w-[42rem] text-[1.25rem] leading-relaxed text-graphite/75">
           Delamo s preverjenimi materiali in ob ogledu svetujemo, katera kritina je prava za naklon in konstrukcijo
           vaše strehe.
         </p>
@@ -34,7 +34,7 @@ export function Materials() {
               {[...partners, ...partners].map((p, i) => (
                 <li
                   key={`${p.name}-${i}`}
-                  className="grid h-24 w-52 shrink-0 place-items-center rounded-[14px] bg-white px-7 shadow-[0_10px_30px_-18px_rgb(0_0_0/0.8)] md:h-28 md:w-60"
+                  className="grid h-24 w-52 shrink-0 place-items-center px-7 md:h-28 md:w-60"
                 >
                   <Image
                     src={p.src}

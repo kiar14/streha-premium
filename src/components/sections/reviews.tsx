@@ -26,7 +26,7 @@ export function Reviews() {
   }, [paused, reduced, go])
 
   return (
-    <section aria-labelledby="mnenja-title" className="bg-zinc py-24 text-graphite md:py-32">
+    <section aria-labelledby="mnenja-title" className="bg-zinc-2 py-16 text-graphite md:py-20">
       <div className="mx-auto max-w-[80rem] px-5 md:px-8">
         <SectionEyebrow>Mnenja strank</SectionEyebrow>
         <h2
@@ -45,7 +45,7 @@ export function Reviews() {
           onMouseLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
           onBlur={(e) => !regionRef.current?.contains(e.relatedTarget as Node) && setPaused(false)}
-          className="relative mx-auto mt-14 max-w-[64rem] md:mt-16 md:px-16"
+          className="relative mx-auto mt-10 max-w-[56rem] md:px-16"
         >
           <div className="grid rounded-[14px] border border-graphite/10 bg-white shadow-[0_1px_2px_rgb(21_23_26/0.04)]">
             {reviews.map((r, i) => {
@@ -58,7 +58,7 @@ export function Reviews() {
                   aria-label={`${i + 1} od ${count}`}
                   aria-hidden={!active}
                   className={cn(
-                    "col-start-1 row-start-1 flex flex-col items-center justify-center px-6 py-12 text-center transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-16 md:py-14",
+                    "col-start-1 row-start-1 flex flex-col items-center justify-center px-6 py-8 text-center transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-14 md:py-9",
                     active ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0",
                   )}
                 >
@@ -67,10 +67,10 @@ export function Reviews() {
                       <Star key={s} aria-hidden className="size-5 fill-current" strokeWidth={0} />
                     ))}
                   </div>
-                  <blockquote className="mt-6 max-w-[40rem] text-[clamp(1.25rem,2.2vw,1.7rem)] leading-[1.4] font-medium tracking-[-0.01em] text-graphite">
+                  <blockquote className="mt-4 max-w-[40rem] text-[clamp(1.15rem,1.8vw,1.4rem)] leading-[1.45] font-medium tracking-[-0.01em] text-graphite">
                     <p>„{r.quote}“</p>
                   </blockquote>
-                  <figcaption className="mt-7 flex flex-col items-center gap-1.5 text-[1rem] text-graphite/70 sm:flex-row sm:gap-3">
+                  <figcaption className="mt-5 flex flex-col items-center gap-1.5 text-[1rem] text-graphite/70 sm:flex-row sm:gap-3">
                     <span className="flex items-center gap-3">
                       <span aria-hidden className="h-px w-6 bg-graphite/25" />
                       <span className="font-medium text-graphite/85">{r.name}</span>
@@ -85,7 +85,7 @@ export function Reviews() {
           <ArrowButton side="left" onClick={() => go(-1)} label="Prejšnje mnenje" />
           <ArrowButton side="right" onClick={() => go(1)} label="Naslednje mnenje" />
 
-          <div className="mt-8 flex items-center justify-center gap-2">
+          <div className="mt-5 flex items-center justify-center gap-2">
             {reviews.map((r, i) => (
               <button
                 key={r.name}
@@ -106,7 +106,7 @@ export function Reviews() {
           </div>
         </div>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <a
             href={company.googleProfile}
             target="_blank"

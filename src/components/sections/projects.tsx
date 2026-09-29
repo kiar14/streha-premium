@@ -12,11 +12,11 @@ export function Projects() {
   return (
     <section id="projekti" aria-labelledby="projekti-title" className="bg-white py-24 text-graphite md:py-32">
       <div className="mx-auto max-w-[88rem] px-5 md:px-8">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h2 id="projekti-title" className="font-display text-[clamp(2.5rem,5.6vw,4.75rem)] lg:col-span-7">
-            Naše strehe.
+        <div className="flex flex-col items-center gap-6 text-center">
+          <h2 id="projekti-title" className="font-display text-[clamp(2.5rem,5.6vw,4.75rem)]">
+            Naši projekti.
           </h2>
-          <p className="max-w-[30rem] text-lg leading-relaxed text-graphite/75 lg:col-span-5 lg:justify-self-end">
+          <p className="max-w-[36rem] text-lg leading-relaxed text-graphite/75">
             Posnetki z naših gradbišč. Brez fotografij iz kataloga.
           </p>
         </div>

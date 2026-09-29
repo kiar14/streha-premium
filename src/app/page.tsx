@@ -3,7 +3,6 @@ import { company } from "@/content/site"
 import { baseOpenGraph, siteUrl } from "@/lib/metadata"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
-import { MobileActionBar } from "@/components/mobile-action-bar"
 import { Hero } from "@/components/sections/hero"
 import { Services } from "@/components/sections/services"
 import { Enquiry } from "@/components/sections/enquiry"
@@ -64,7 +63,6 @@ export default function HomePage() {
         <CtaBand />
       </main>
       <SiteFooter />
-      <MobileActionBar />
     </>
   )
 }

@@ -26,7 +26,7 @@ export function Process() {
   )
 
   return (
-    <section ref={scope} id="kako-delamo" aria-labelledby="kako-delamo-title" className="bg-zinc py-24 text-graphite md:py-32">
+    <section ref={scope} id="kako-delamo" aria-labelledby="kako-delamo-title" className="bg-zinc-2 py-24 text-graphite md:py-32">
       <div className="mx-auto max-w-[80rem] px-5 md:px-8">
         <SectionEyebrow>Kako delamo</SectionEyebrow>
         <h2

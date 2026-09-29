@@ -59,7 +59,7 @@ export function Enquiry() {
       className="scroll-mt-20 border-y border-graphite/10 bg-zinc-2 py-20 md:py-28"
     >
       <div className="mx-auto max-w-[80rem] px-4 md:px-8">
-        <div className="grid overflow-hidden rounded-[18px] bg-[#f8f8f6] shadow-[0_1px_2px_rgb(21_23_26/0.06),0_30px_70px_-30px_rgb(21_23_26/0.45)] lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)]">
+        <div className="grid overflow-hidden rounded-[18px] bg-white shadow-[0_1px_2px_rgb(21_23_26/0.06),0_30px_70px_-30px_rgb(21_23_26/0.45)] lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)]">
           {/* Left: promise and direct contact */}
           <div className="relative flex flex-col bg-slate px-7 py-10 text-zinc sm:px-10 md:px-12 md:py-14">
             <h2 id="povprasevanje-title" className="font-display text-[clamp(2.5rem,4.6vw,3.9rem)]">
