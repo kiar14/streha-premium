@@ -70,13 +70,12 @@ export function Hero() {
 
         const title = SplitText.create("[data-hero-title]", { type: "lines", mask: "lines" })
         gsap.set(still, { opacity: 0, scale: match })
-        gsap.set(["[data-hero-shade]", "[data-hero-reveal]", "[data-hero-stamp]", "[data-hero-trust]"], { opacity: 0 })
+        gsap.set(["[data-hero-reveal]", "[data-hero-stamp]", "[data-hero-trust]"], { opacity: 0 })
         root.dataset.phase = "reveal"
 
         const tl = gsap.timeline({ defaults: { ease: "expo.out" }, onComplete: settle })
         tl.to(still, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0)
           .to(still, { scale: 1, duration: 2.4, ease: "power3.inOut" }, 0.1)
-          .to("[data-hero-shade]", { opacity: 1, duration: 1.6, ease: "power2.out" }, 0.2)
           .set("[data-hero-reveal]", { opacity: 1 }, 0.45)
           .from(title.lines, { yPercent: 110, duration: 1.2, stagger: 0.1 }, 0.45)
           .from("[data-hero-line]", { opacity: 0, y: 18, duration: 1, stagger: 0.12 }, 0.95)
@@ -167,14 +166,6 @@ export function Hero() {
             className="object-cover"
           />
         </div>
-        {/* keeps the header legible over a bright sky */}
-        <div aria-hidden className="absolute inset-x-0 top-0 hidden h-44 bg-gradient-to-b from-ink/75 to-transparent lg:block" />
-        <div
-          aria-hidden
-          data-hero-shade
-          className="absolute inset-0 hidden bg-[linear-gradient(to_right,rgb(22_24_27/0.86)_0%,rgb(22_24_27/0.6)_36%,transparent_66%),linear-gradient(to_top,rgb(22_24_27/0.94)_0%,rgb(22_24_27/0.4)_22%,transparent_38%)] lg:block"
-        />
-
         <WarrantyStamp
           data-hero-stamp
           className="absolute top-[calc(var(--header-h)+0.75rem)] right-3 w-20 sm:w-24 lg:top-32 lg:right-[6vw] lg:w-40 xl:w-44"
@@ -223,6 +214,7 @@ export function Hero() {
       {/* trust bar: a solid band across the bottom of the hero */}
       <div
         data-hero-trust
+        data-header-dark
         className="relative border-t border-zinc/10 bg-[#26292e] lg:absolute lg:inset-x-0 lg:bottom-0 lg:bg-[#26292e]/95"
       >
         <ul
@@ -234,7 +226,7 @@ export function Hero() {
               key={item.title}
               data-hero-trust-item
               className={cn(
-                "flex flex-col items-center justify-center px-4 py-7 text-center lg:my-5 lg:py-3",
+                "flex flex-col items-center justify-center px-4 py-5 text-center lg:my-3 lg:py-1.5",
                 i % 2 === 1 && "border-l border-zinc/12",
                 i > 1 && "border-t border-zinc/12 lg:border-t-0",
                 i === 2 && "lg:border-l",
@@ -242,16 +234,16 @@ export function Hero() {
             >
               {"figure" in item ? (
                 <>
-                  <span className="font-display text-[clamp(2.4rem,3.4vw,3rem)] text-chalk">{item.figure}</span>
-                  <span className="mt-2 max-w-[14rem] text-[1.15rem] leading-snug text-zinc/80">{item.title}</span>
+                  <span className="font-display text-[clamp(2.2rem,3vw,2.7rem)] text-chalk">{item.figure}</span>
+                  <span className="mt-1.5 max-w-[14rem] text-[1.15rem] leading-snug text-zinc/80">{item.title}</span>
                 </>
               ) : (
                 <>
-                  <item.icon aria-hidden className="size-8 text-chalk" strokeWidth={1.5} />
-                  <span className="mt-3 text-[1.2rem] leading-tight font-semibold text-zinc lg:text-[1.3rem]">
+                  <item.icon aria-hidden className="size-7 text-chalk" strokeWidth={1.5} />
+                  <span className="mt-2 text-[1.2rem] leading-tight font-semibold text-zinc lg:text-[1.3rem]">
                     {item.title}
                   </span>
-                  <span className="mt-1.5 text-[1.1rem] leading-snug text-zinc/75">{item.text}</span>
+                  <span className="mt-1 text-[1.1rem] leading-snug text-zinc/75">{item.text}</span>
                 </>
               )}
             </li>

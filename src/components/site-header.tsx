@@ -7,9 +7,36 @@ import { AnimatePresence, motion } from "motion/react"
 import { Menu, Phone, X } from "lucide-react"
 import { company, nav } from "@/content/site"
 import { CtaLink } from "@/components/cta-link"
+import { cn } from "@/lib/utils"
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
+  const [overDark, setOverDark] = useState(false)
+  const light = open || overDark
+
+  // Black words by default; white while the bar sits over a band marked data-header-dark.
+  useEffect(() => {
+    let frame = 0
+    const check = () => {
+      frame = 0
+      const y = document.querySelector(".site-header")!.getBoundingClientRect().height / 2
+      setOverDark(
+        [...document.querySelectorAll("[data-header-dark]")].some((el) => {
+          const r = el.getBoundingClientRect()
+          return r.top <= y && r.bottom >= y
+        }),
+      )
+    }
+    const onScroll = () => (frame ||= requestAnimationFrame(check))
+    check()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onScroll)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+    }
+  }, [])
 
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : ""
@@ -21,12 +48,20 @@ export function SiteHeader() {
       <div className="mx-auto flex h-[calc(var(--header-h)-1px)] max-w-[88rem] items-center gap-6 px-5 md:px-8 xl:grid xl:grid-cols-[1fr_auto_1fr]">
         <Link href="/" className="shrink-0 xl:justify-self-start" aria-label="Streha Premium, domov">
           <Image
+            src="/brand/logo-dark.png"
+            alt="Streha Premium"
+            width={640}
+            height={411}
+            loading="eager"
+            className={cn("h-12 w-auto max-[700px]:h-11", light && "hidden")}
+          />
+          <Image
             src="/brand/logo-light.png"
             alt="Streha Premium"
             width={640}
             height={411}
             loading="eager"
-            className="h-12 w-auto max-[700px]:h-11"
+            className={cn("h-12 w-auto max-[700px]:h-11", !light && "hidden")}
           />
         </Link>
 
@@ -36,7 +71,10 @@ export function SiteHeader() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="text-[1.0625rem] font-semibold text-zinc/85 transition-colors hover:text-zinc"
+                  className={cn(
+                    "text-[1.0625rem] font-semibold transition-colors",
+                    light ? "text-zinc/85 hover:text-zinc" : "text-graphite/85 hover:text-graphite",
+                  )}
                 >
                   {item.label}
                 </a>
@@ -49,7 +87,10 @@ export function SiteHeader() {
           <a
             href={company.phoneHref}
             aria-label={`Pokličite ${company.phone}`}
-            className="tabular inline-flex items-center gap-2 text-[1.0625rem] font-semibold text-zinc transition-colors hover:text-chalk"
+            className={cn(
+              "tabular inline-flex items-center gap-2 text-[1.0625rem] font-semibold transition-colors hover:text-chalk-deep",
+              light ? "text-zinc" : "text-graphite",
+            )}
           >
             <Phone aria-hidden className="size-[1.1rem]" strokeWidth={2} />
             <span className="xl:hidden min-[1400px]:inline">{company.phone}</span>
@@ -62,7 +103,10 @@ export function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobilni-meni"
-          className="grid size-12 place-items-center text-zinc max-lg:ml-auto xl:hidden"
+          className={cn(
+            "grid size-12 place-items-center transition-colors max-lg:ml-auto xl:hidden",
+            light ? "text-zinc" : "text-graphite",
+          )}
         >
           <span className="sr-only">{open ? "Zapri meni" : "Odpri meni"}</span>
           {open ? <X aria-hidden className="size-6" /> : <Menu aria-hidden className="size-6" />}

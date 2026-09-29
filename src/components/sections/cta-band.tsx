@@ -4,7 +4,7 @@ import { CtaLink } from "@/components/cta-link"
 
 export function CtaBand({ formHref = "/#povprasevanje" }: { formHref?: string }) {
   return (
-    <section aria-labelledby="cta-title" className="relative overflow-hidden bg-ink py-14 md:py-16">
+    <section aria-labelledby="cta-title" data-header-dark className="relative overflow-hidden bg-ink py-14 md:py-16">
       <div aria-hidden className="tape-ticks absolute inset-x-0 top-0 h-4 text-chalk/60" />
       <div className="mx-auto grid max-w-[88rem] gap-8 px-5 md:px-8 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-8">
