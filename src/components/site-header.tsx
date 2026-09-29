@@ -14,14 +14,17 @@ export function SiteHeader() {
   const [overDark, setOverDark] = useState(false)
   const light = open || overDark
 
-  // Black words by default; white while the bar sits over a band marked data-header-dark.
+  // Black words by default; white while the bar sits over a band marked data-header-dark
+  // (data-header-dark="mobile" counts below the lg breakpoint only).
   useEffect(() => {
     let frame = 0
     const check = () => {
       frame = 0
       const y = document.querySelector(".site-header")!.getBoundingClientRect().height / 2
+      const desktop = window.matchMedia("(min-width: 1024px)").matches
       setOverDark(
-        [...document.querySelectorAll("[data-header-dark]")].some((el) => {
+        [...document.querySelectorAll<HTMLElement>("[data-header-dark]")].some((el) => {
+          if (desktop && el.dataset.headerDark === "mobile") return false
           const r = el.getBoundingClientRect()
           return r.top <= y && r.bottom >= y
         }),

@@ -138,6 +138,9 @@ export function Hero() {
       aria-labelledby="hero-title"
       className="under-header relative isolate bg-ink lg:h-svh lg:min-h-[calc(46rem+var(--header-h))]"
     >
+      {/* phones: a plain strip under the header, so the photo (and the whole roof) starts below it */}
+      <div aria-hidden className="h-(--header-h) bg-white lg:hidden" />
+
       {/* media: 16:10 box on phones, full bleed on desktop */}
       <div data-hero-media className="relative aspect-[16/10] overflow-hidden bg-slate lg:absolute lg:inset-0 lg:aspect-auto">
         <video
@@ -168,7 +171,7 @@ export function Hero() {
         </div>
         <WarrantyStamp
           data-hero-stamp
-          className="absolute top-[calc(var(--header-h)+0.75rem)] right-3 w-20 sm:w-24 lg:top-32 lg:right-[6vw] lg:w-40 xl:w-44"
+          className="absolute top-3 right-3 w-20 sm:w-24 lg:top-32 lg:right-[6vw] lg:w-40 xl:w-44"
         />
 
         {/* intro only: progress of the build, and a way out */}
@@ -184,22 +187,23 @@ export function Hero() {
         </button>
       </div>
 
-      <div className="relative mx-auto flex max-w-[88rem] flex-col px-5 pt-8 pb-10 md:px-8 lg:pointer-events-none lg:h-full lg:pt-[calc(var(--header-h)+clamp(3.5rem,calc(21vh-5rem),7rem))] lg:pb-0">
+      {/* dark text block on phones only; on desktop it floats over the photo */}
+      <div data-header-dark="mobile" className="relative mx-auto flex max-w-[88rem] flex-col px-5 pt-6 pb-7 md:px-8 lg:pointer-events-none lg:h-full lg:pt-[calc(var(--header-h)+clamp(3.5rem,calc(21vh-5rem),7rem))] lg:pb-0">
         <div data-hero-reveal className="pointer-events-auto max-w-[58rem]">
           <h1
             id="hero-title"
             data-hero-title
-            className="font-display text-[clamp(3rem,7.6vw,6rem)] text-zinc"
+            className="font-display text-[clamp(2.6rem,7.6vw,6rem)] text-zinc"
           >
             Streha brez skrbi.
             <br />
             <span className="text-chalk">10&nbsp;let garancije.</span>
           </h1>
-          <p data-hero-line className="mt-6 max-w-[36rem] text-lg leading-relaxed text-zinc/90 md:text-xl">
+          <p data-hero-line className="mt-4 max-w-[36rem] text-lg leading-relaxed lg:mt-6 text-zinc/90 md:text-xl">
             Krovska, kleparska in hidroizolacijska dela po vsej Sloveniji in v Avstriji. Brezplačen ogled in
             ponudba, začetek del takoj po ogledu.
           </p>
-          <div data-hero-line className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
+          <div data-hero-line className="mt-6 flex flex-col items-start gap-4 sm:flex-row lg:mt-8 sm:items-center sm:gap-7">
             <CtaLink size="lg" />
             <a
               href={company.phoneHref}
@@ -226,7 +230,7 @@ export function Hero() {
               key={item.title}
               data-hero-trust-item
               className={cn(
-                "flex flex-col items-center justify-center px-4 py-5 text-center lg:my-3 lg:py-1.5",
+                "flex flex-col items-center justify-center px-4 py-4 text-center lg:my-3 lg:py-1.5",
                 i % 2 === 1 && "border-l border-zinc/12",
                 i > 1 && "border-t border-zinc/12 lg:border-t-0",
                 i === 2 && "lg:border-l",
@@ -234,16 +238,16 @@ export function Hero() {
             >
               {"figure" in item ? (
                 <>
-                  <span className="font-display text-[clamp(2.2rem,3vw,2.7rem)] text-chalk">{item.figure}</span>
-                  <span className="mt-1.5 max-w-[14rem] text-[1.15rem] leading-snug text-zinc/80">{item.title}</span>
+                  <span className="font-display text-[1.9rem] text-chalk lg:text-[clamp(2.2rem,3vw,2.7rem)]">{item.figure}</span>
+                  <span className="mt-1 max-w-[14rem] text-[1.05rem] leading-snug text-zinc/80 lg:mt-1.5 lg:text-[1.15rem]">{item.title}</span>
                 </>
               ) : (
                 <>
-                  <item.icon aria-hidden className="size-7 text-chalk" strokeWidth={1.5} />
-                  <span className="mt-2 text-[1.2rem] leading-tight font-semibold text-zinc lg:text-[1.3rem]">
+                  <item.icon aria-hidden className="size-6 text-chalk lg:size-7" strokeWidth={1.5} />
+                  <span className="mt-1.5 text-[1.1rem] leading-tight font-semibold text-zinc lg:mt-2 lg:text-[1.3rem]">
                     {item.title}
                   </span>
-                  <span className="mt-1 text-[1.1rem] leading-snug text-zinc/75">{item.text}</span>
+                  <span className="mt-1 text-[1.02rem] leading-snug text-zinc/75 lg:text-[1.1rem]">{item.text}</span>
                 </>
               )}
             </li>
