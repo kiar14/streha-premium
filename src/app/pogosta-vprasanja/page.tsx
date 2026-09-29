@@ -36,7 +36,7 @@ export default function FaqPage() {
       />
       <SiteHeader />
       <main>
-        <section aria-labelledby="faq-title" className="relative overflow-hidden bg-ink pt-40 pb-16 md:pt-48 md:pb-24">
+        <section aria-labelledby="faq-title" className="under-header relative overflow-hidden bg-ink pt-40 pb-16 md:pt-48 md:pb-24">
           <div aria-hidden className="tape-ticks absolute inset-x-0 bottom-0 h-4 text-zinc/25" />
           <div className="mx-auto max-w-[88rem] px-5 md:px-8">
             <h1 id="faq-title" className="font-display text-[clamp(3rem,8vw,6rem)] text-zinc">

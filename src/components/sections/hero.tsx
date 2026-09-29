@@ -137,7 +137,7 @@ export function Hero() {
       id="vrh"
       data-phase="intro"
       aria-labelledby="hero-title"
-      className="relative isolate bg-ink pt-20 lg:h-svh lg:min-h-[46rem] lg:pt-0"
+      className="under-header relative isolate bg-ink lg:h-svh lg:min-h-[calc(46rem+var(--header-h))]"
     >
       {/* media: 16:10 box on phones, full bleed on desktop */}
       <div data-hero-media className="relative aspect-[16/10] overflow-hidden bg-slate lg:absolute lg:inset-0 lg:aspect-auto">
@@ -177,7 +177,7 @@ export function Hero() {
 
         <WarrantyStamp
           data-hero-stamp
-          className="absolute top-3 right-3 w-20 sm:w-24 lg:top-32 lg:right-[6vw] lg:w-40 xl:w-44"
+          className="absolute top-[calc(var(--header-h)+0.75rem)] right-3 w-20 sm:w-24 lg:top-32 lg:right-[6vw] lg:w-40 xl:w-44"
         />
 
         {/* intro only: progress of the build, and a way out */}
@@ -193,7 +193,7 @@ export function Hero() {
         </button>
       </div>
 
-      <div className="relative mx-auto flex max-w-[88rem] flex-col px-5 pt-8 pb-10 md:px-8 lg:pointer-events-none lg:h-full lg:pt-[clamp(8.5rem,21vh,12rem)] lg:pb-0">
+      <div className="relative mx-auto flex max-w-[88rem] flex-col px-5 pt-8 pb-10 md:px-8 lg:pointer-events-none lg:h-full lg:pt-[calc(var(--header-h)+clamp(3.5rem,calc(21vh-5rem),7rem))] lg:pb-0">
         <div data-hero-reveal className="pointer-events-auto max-w-[58rem]">
           <h1
             id="hero-title"

@@ -219,3 +219,42 @@
     display: none;
   }
 }
+
+/* Header height, shared by the header, the hero and the mobile menu. */
+:root {
+  --header-h: 66px;
+}
+@media (max-width: 1150px) {
+  :root {
+    --header-h: 64px;
+  }
+}
+@media (max-width: 700px) {
+  :root {
+    --header-h: 60px;
+  }
+}
+
+/* Clear glass bar over the hero. The blur dies silently if the header or any
+   parent gets a filter, opacity < 1, transform or isolation, if anything
+   inside uses mix-blend-mode, or if an opaque background is set elsewhere. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+}
+@media (max-width: 700px) {
+  .site-header {
+    background: rgba(255, 255, 255, 0.24);
+  }
+}
+
+/* First section of a page: slides up under the sticky header. */
+.under-header {
+  margin-top: calc(-1 * var(--header-h));
+}

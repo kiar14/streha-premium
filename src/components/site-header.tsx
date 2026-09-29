@@ -7,31 +7,18 @@ import { AnimatePresence, motion } from "motion/react"
 import { Menu, Phone, X } from "lucide-react"
 import { company, nav } from "@/content/site"
 import { CtaLink } from "@/components/cta-link"
-import { cn } from "@/lib/utils"
 
 export function SiteHeader() {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
 
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : ""
   }, [open])
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
-        scrolled || open ? "bg-ink/95 shadow-[0_1px_0_rgb(242_243_241/0.1)]" : "bg-transparent",
-      )}
-    >
-      <div className="mx-auto flex h-20 max-w-[88rem] items-center gap-6 px-5 md:px-8 xl:grid xl:grid-cols-[1fr_auto_1fr]">
+    // Glass styling lives in globals.css (.site-header); no background classes here.
+    <header className="site-header">
+      <div className="mx-auto flex h-[calc(var(--header-h)-1px)] max-w-[88rem] items-center gap-6 px-5 md:px-8 xl:grid xl:grid-cols-[1fr_auto_1fr]">
         <Link href="/" className="shrink-0 xl:justify-self-start" aria-label="Streha Premium, domov">
           <Image
             src="/brand/logo-light.png"
@@ -39,7 +26,7 @@ export function SiteHeader() {
             width={640}
             height={411}
             loading="eager"
-            className="h-14 w-auto"
+            className="h-12 w-auto max-[700px]:h-11"
           />
         </Link>
 
@@ -91,7 +78,7 @@ export function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="h-[calc(100dvh-5rem)] overflow-y-auto border-t border-zinc/10 bg-ink px-5 pb-28 pt-6 xl:hidden"
+            className="absolute inset-x-0 top-0 -z-10 h-dvh overflow-y-auto bg-ink px-5 pt-[calc(var(--header-h)+1.5rem)] pb-28 xl:hidden"
           >
             <ul className="divide-y divide-zinc/10">
               {nav.map((item) => (
