@@ -34,16 +34,28 @@ export const viewport: Viewport = {
   themeColor: "#1f2226",
 }
 
+const headScript = `
+document.documentElement.classList.add("js");
+try {
+  history.scrollRestoration = "manual";
+  var nav = performance.getEntriesByType("navigation")[0];
+  if (nav && nav.type === "reload") {
+    sessionStorage.removeItem("sp-hero-seen");
+    if (location.hash) history.replaceState(history.state, "", location.pathname + location.search);
+    window.scrollTo(0, 0);
+  } else if (sessionStorage.getItem("sp-hero-seen") === "1") {
+    document.documentElement.classList.add("hero-seen");
+  }
+} catch (e) {}
+`
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="sl" className={archivo.variable} suppressHydrationWarning>
       <head>
-        {/* Before first paint: mark JS, and skip the hero intro for visitors who already saw it. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `document.documentElement.classList.add("js");try{if(sessionStorage.getItem("sp-hero-seen")==="1")document.documentElement.classList.add("hero-seen")}catch(e){}`,
-          }}
-        />
+        {/* Before first paint: mark JS. A reload always starts at the top (no restored scroll,
+            no #anchor jump) and replays the hero intro; other visits in the session skip it. */}
+        <script dangerouslySetInnerHTML={{ __html: headScript }} />
       </head>
       <body className="min-h-dvh">
         <SmoothScroll>{children}</SmoothScroll>

@@ -161,7 +161,8 @@
 }
 
 /* Hero intro: while the video plays, the still, shade, text and stamp wait.
-   Only with JS, only on a first visit, only when motion is welcome. */
+   Only with JS, only on the first visit in a session or after a reload,
+   only when motion is welcome. */
 @media (prefers-reduced-motion: no-preference) {
   html.js:not(.hero-seen) #vrh[data-phase="intro"] :is([data-hero-still], [data-hero-reveal], [data-hero-stamp], [data-hero-trust]) {
     opacity: 0;
