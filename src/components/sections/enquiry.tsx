@@ -3,7 +3,7 @@
 import { useEffect, useId, useState } from "react"
 import { useForm, type UseFormRegisterReturn } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { ArrowUpRight, Check, ChevronDown, Loader2, Mail, Phone } from "lucide-react"
+import { ArrowUpRight, Check, Loader2, Mail, Phone } from "lucide-react"
 import { sendEnquiry } from "@/app/actions"
 import { company, type ServiceId } from "@/content/site"
 import { enquirySchema, serviceOptions, type EnquiryInput } from "@/lib/enquiry-schema"
@@ -11,7 +11,7 @@ import { PREFILL_EVENT } from "@/components/service-enquiry-link"
 import { WhatsAppIcon } from "@/components/icons"
 import { cn } from "@/lib/utils"
 
-const defaults = { name: "", phone: "", location: "", service: "", message: "" } as unknown as EnquiryInput
+const defaults: EnquiryInput = { name: "", phone: "", services: [], message: "" }
 
 export function Enquiry() {
   const [sent, setSent] = useState<{ name: string; phone: string } | null>(null)
@@ -20,6 +20,7 @@ export function Enquiry() {
   const {
     register,
     handleSubmit,
+    getValues,
     setValue,
     setError,
     reset,
@@ -29,11 +30,12 @@ export function Enquiry() {
   useEffect(() => {
     const onPrefill = (e: Event) => {
       const id = (e as CustomEvent<ServiceId>).detail
-      setValue("service", id, { shouldValidate: true })
+      const current = getValues("services")
+      if (!current.includes(id)) setValue("services", [...current, id], { shouldValidate: true })
     }
     window.addEventListener(PREFILL_EVENT, onPrefill)
     return () => window.removeEventListener(PREFILL_EVENT, onPrefill)
-  }, [setValue])
+  }, [getValues, setValue])
 
   async function onSubmit(values: EnquiryInput) {
     setServerError(false)
@@ -124,7 +126,6 @@ export function Enquiry() {
                 >
                   Pošlji novo povpraševanje
                 </button>
-                <p className="mt-10 text-base text-graphite/65">Demo obrazec, podatki se ne pošiljajo ali shranjujejo.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-x-6 gap-y-6 sm:grid-cols-2">
@@ -134,27 +135,20 @@ export function Enquiry() {
                 <Field label="Telefon" error={errors.phone?.message}>
                   {(p) => <input {...p} {...register("phone")} type="tel" inputMode="tel" autoComplete="tel" />}
                 </Field>
-                <Field label="Kraj izvedbe" error={errors.location?.message}>
-                  {(p) => (
-                    <input {...p} {...register("location")} autoComplete="address-level2" placeholder="npr. Domžale" />
-                  )}
-                </Field>
-                <Field label="Vrsta storitve" error={errors.service?.message}>
-                  {(p) => <ServiceSelect inputProps={p} registration={register("service")} />}
-                </Field>
+                <ServiceChips registration={register("services")} error={errors.services?.message} />
                 <Field label="Sporočilo" optional error={errors.message?.message} className="sm:col-span-2">
                   {(p) => (
                     <textarea
                       {...p}
                       {...register("message")}
                       rows={4}
-                      placeholder="Nova streha ali obnova, približna velikost, želena kritina …"
+                      placeholder="Kraj, vrsta strehe, kaj bi radi uredili …"
                       className={cn(p.className, "h-auto min-h-28 resize-y py-3")}
                     />
                   )}
                 </Field>
 
-                <div className="flex flex-col gap-5 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+                <div className="sm:col-span-2">
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -174,9 +168,6 @@ export function Enquiry() {
                       </>
                     )}
                   </button>
-                  <p className="max-w-[15rem] text-base leading-relaxed text-graphite/65 sm:text-right">
-                    Demo obrazec. Podatki se ne pošiljajo ali shranjujejo.
-                  </p>
                 </div>
                 {serverError && (
                   <p role="alert" className="text-base font-medium text-chalk-deep sm:col-span-2">
@@ -238,26 +229,31 @@ function Field({
   )
 }
 
-function ServiceSelect({
-  inputProps,
-  registration,
-}: {
-  inputProps: ControlProps
-  registration: UseFormRegisterReturn
-}) {
+function ServiceChips({ registration, error }: { registration: UseFormRegisterReturn; error?: string }) {
+  const errorId = `${useId()}-error`
   return (
-    <div className="relative">
-      <select {...inputProps} {...registration} className={cn(inputProps.className, "appearance-none pr-11")}>
-        <option value="" disabled>
-          Izberite storitev
-        </option>
+    <fieldset className="sm:col-span-2" aria-describedby={error ? errorId : undefined}>
+      <legend className="mb-3 text-[1.05rem] font-medium text-graphite">
+        Storitve
+        <span className="ml-1.5 text-base font-normal text-graphite/65">(izberete lahko več)</span>
+      </legend>
+      <div className="flex flex-wrap gap-2.5">
         {serviceOptions.map((o) => (
-          <option key={o.id} value={o.id}>
+          <label
+            key={o.id}
+            className="inline-flex h-11 cursor-pointer items-center gap-2 rounded-full border border-graphite/18 bg-white px-4 text-base font-medium text-graphite transition-[border-color,background-color,color] duration-200 select-none hover:border-graphite/40 has-checked:border-graphite has-checked:bg-graphite has-checked:text-white has-focus-visible:ring-4 has-focus-visible:ring-graphite/15"
+          >
+            <input type="checkbox" value={o.id} {...registration} className="peer sr-only" />
+            <Check aria-hidden className="hidden size-4 peer-checked:block" strokeWidth={2.5} />
             {o.label}
-          </option>
+          </label>
         ))}
-      </select>
-      <ChevronDown aria-hidden className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 text-graphite/65" />
-    </div>
+      </div>
+      {error && (
+        <p id={errorId} className="mt-2 text-base text-chalk-deep">
+          {error}
+        </p>
+      )}
+    </fieldset>
   )
 }
