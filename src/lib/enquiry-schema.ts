@@ -17,8 +17,7 @@ export const enquirySchema = z.object({
     .string()
     .trim()
     .regex(/^[+\d][\d\s/-]{5,}$/, { error: "Vpišite telefonsko številko, da vas lahko pokličemo." }),
-  location: z.string().trim().min(2, { error: "Vpišite kraj, kjer je streha." }),
-  service: z.enum(serviceIds, { error: "Izberite vrsto storitve." }),
+  services: z.array(z.enum(serviceIds)).min(1, { error: "Izberite vsaj eno storitev." }),
   message: z.string().trim().max(2000, { error: "Sporočilo je predolgo (največ 2000 znakov)." }),
 })
 
