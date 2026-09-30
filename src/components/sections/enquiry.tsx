@@ -63,29 +63,29 @@ export function Enquiry() {
       <div className="mx-auto max-w-[80rem] px-4 md:px-8">
         <div className="grid overflow-hidden rounded-[18px] bg-[#f8f8f6] shadow-[0_1px_2px_rgb(21_23_26/0.06),0_30px_70px_-30px_rgb(21_23_26/0.45)] lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)]">
           {/* Left: promise and direct contact */}
-          <div className="relative flex flex-col bg-slate px-7 py-10 text-zinc sm:px-10 md:px-12 md:py-14">
-            <h2 id="povprasevanje-title" className="font-display text-[clamp(2.5rem,4.6vw,3.9rem)]">
+          <div className="relative flex flex-col bg-slate px-7 py-9 text-zinc sm:px-10 md:px-12 md:py-10">
+            <h2 id="povprasevanje-title" className="font-display text-[clamp(2.25rem,4vw,3.4rem)]">
               Vaša streha.
               <br />
               Naš ogled.
               <br />
               <span className="text-chalk">Brezplačno.</span>
             </h2>
-            <p className="mt-6 max-w-[26rem] text-[1.15rem] leading-relaxed text-zinc/75">
+            <p className="mt-5 mb-8 max-w-[26rem] text-[1.1rem] leading-relaxed text-zinc/75">
               Nova streha, obnova ali popravilo po neurju? Povejte nam, kaj potrebujete. Pokličemo vas in se
               dogovorimo za ogled.
             </p>
 
-            <div className="mt-10 border-t border-zinc/12 pt-8 lg:mt-auto">
+            <div className="mt-auto border-t border-zinc/12 pt-5">
               <p className="annotation text-zinc/55">Ali nas pokličite</p>
               <a
                 href={company.phoneHref}
-                className="tabular mt-3 inline-flex items-center gap-3 text-[clamp(1.75rem,3vw,2.25rem)] font-bold tracking-tight text-zinc transition-colors hover:text-chalk"
+                className="tabular mt-2 inline-flex items-center gap-3 text-[clamp(1.75rem,3vw,2.25rem)] font-bold tracking-tight text-zinc transition-colors hover:text-chalk"
               >
                 <Phone aria-hidden className="size-6 text-chalk" strokeWidth={1.75} />
                 {company.phone}
               </a>
-              <div className="mt-5 flex flex-col gap-3 text-[1.05rem] text-zinc/75">
+              <div className="mt-4 flex flex-col gap-2 text-[1.05rem] text-zinc/75">
                 <a href={`mailto:${company.email}`} className="inline-flex items-center gap-2.5 transition-colors hover:text-zinc">
                   <Mail aria-hidden className="size-4" /> {company.email}
                   <ArrowUpRight aria-hidden className="size-3.5 opacity-60" />
@@ -104,7 +104,7 @@ export function Enquiry() {
           </div>
 
           {/* Right: the form */}
-          <div className="px-6 py-10 text-graphite sm:px-10 md:px-12 md:py-14">
+          <div className="px-6 py-9 text-graphite sm:px-10 md:px-12 md:py-10">
             {sent ? (
               <div role="status" className="flex h-full flex-col justify-center">
                 <span className="grid size-14 place-items-center rounded-full bg-chalk-deep text-white">
@@ -128,7 +128,7 @@ export function Enquiry() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-x-6 gap-y-6 sm:grid-cols-2">
+              <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-x-5 gap-y-4 sm:grid-cols-2">
                 <Field label="Ime in priimek" error={errors.name?.message}>
                   {(p) => <input {...p} {...register("name")} autoComplete="name" />}
                 </Field>
@@ -141,9 +141,9 @@ export function Enquiry() {
                     <textarea
                       {...p}
                       {...register("message")}
-                      rows={4}
+                      rows={3}
                       placeholder="Kraj, vrsta strehe, kaj bi radi uredili …"
-                      className={cn(p.className, "h-auto min-h-28 resize-y py-3")}
+                      className={cn(p.className, "h-auto min-h-22 resize-y py-2.5")}
                     />
                   )}
                 </Field>
@@ -152,7 +152,7 @@ export function Enquiry() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group inline-flex h-14 items-center justify-center gap-3 rounded-[10px] bg-chalk-deep px-7 text-base font-semibold text-white transition-colors duration-300 hover:bg-[#c01616] disabled:cursor-wait disabled:opacity-70"
+                    className="group inline-flex h-12 items-center justify-center gap-3 rounded-[10px] bg-chalk-deep px-7 text-base font-semibold text-white transition-colors duration-300 hover:bg-[#c01616] disabled:cursor-wait disabled:opacity-70"
                   >
                     {isSubmitting ? (
                       <>
@@ -191,7 +191,7 @@ type ControlProps = {
 }
 
 const controlClass =
-  "h-13 w-full rounded-[10px] border border-graphite/18 bg-white px-4 text-base text-graphite placeholder:text-graphite/60 shadow-[inset_0_1px_1px_rgb(21_23_26/0.03)] transition-[border-color,box-shadow] duration-200 hover:border-graphite/35 focus:border-graphite focus:outline-none focus:ring-4 focus:ring-graphite/8 aria-invalid:border-chalk-deep aria-invalid:ring-chalk-deep/10"
+  "h-11 w-full rounded-[10px] border border-graphite/18 bg-white px-4 text-base text-graphite placeholder:text-graphite/60 shadow-[inset_0_1px_1px_rgb(21_23_26/0.03)] transition-[border-color,box-shadow] duration-200 hover:border-graphite/35 focus:border-graphite focus:outline-none focus:ring-4 focus:ring-graphite/8 aria-invalid:border-chalk-deep aria-invalid:ring-chalk-deep/10"
 
 function Field({
   label,
@@ -210,7 +210,7 @@ function Field({
   const errorId = `${id}-error`
   return (
     <div className={cn("flex flex-col", className)}>
-      <label htmlFor={id} className="mb-2 text-[1.05rem] font-medium text-graphite">
+      <label htmlFor={id} className="mb-1.5 text-[1.05rem] font-medium text-graphite">
         {label}
         {optional && <span className="ml-1.5 text-base font-normal text-graphite/65">(neobvezno)</span>}
       </label>
@@ -233,18 +233,18 @@ function ServiceChips({ registration, error }: { registration: UseFormRegisterRe
   const errorId = `${useId()}-error`
   return (
     <fieldset className="sm:col-span-2" aria-describedby={error ? errorId : undefined}>
-      <legend className="mb-3 text-[1.05rem] font-medium text-graphite">
+      <legend className="mb-2 text-[1.05rem] font-medium text-graphite">
         Storitve
         <span className="ml-1.5 text-base font-normal text-graphite/65">(izberete lahko več)</span>
       </legend>
-      <div className="flex flex-wrap gap-2.5">
+      <div className="flex flex-wrap gap-2">
         {serviceOptions.map((o) => (
           <label
             key={o.id}
-            className="inline-flex h-11 cursor-pointer items-center gap-2 rounded-full border border-graphite/18 bg-white px-4 text-base font-medium text-graphite transition-[border-color,background-color,color] duration-200 select-none hover:border-graphite/40 has-checked:border-graphite has-checked:bg-graphite has-checked:text-white has-focus-visible:ring-4 has-focus-visible:ring-graphite/15"
+            className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full border border-graphite/18 bg-white px-3.5 text-[0.95rem] font-medium text-graphite transition-[border-color,background-color,color] duration-200 select-none hover:border-graphite/40 has-checked:border-graphite has-checked:bg-graphite has-checked:text-white has-focus-visible:ring-4 has-focus-visible:ring-graphite/15"
           >
             <input type="checkbox" value={o.id} {...registration} className="peer sr-only" />
-            <Check aria-hidden className="hidden size-4 peer-checked:block" strokeWidth={2.5} />
+            <Check aria-hidden className="hidden size-3.5 peer-checked:block" strokeWidth={2.5} />
             {o.label}
           </label>
         ))}
